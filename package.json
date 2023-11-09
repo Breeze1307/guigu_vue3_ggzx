@@ -13,9 +13,12 @@
     "lint:eslint": "eslint src/**/*.{ts,vue} --cache --fix",
     "lint:style": "stylelint src/**/*.{css,scss,vue} --cache --fix",
     "preinstall": "node ./scripts/preinstall.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build:test": "vue-tsc && vite build --mode test",
+    "build:prod": "vue-tsc && vite build --mode production"
   },
   "dependencies": {
+    "element-plus": "^2.4.2",
     "vue": "^3.3.4"
   },
   "devDependencies": {

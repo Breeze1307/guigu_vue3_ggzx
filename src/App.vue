@@ -1,9 +1,19 @@
 <template>
-  <div></div>
+  <div>
+    <el-row class="mb-4">
+      <el-button>Default</el-button>
+      <el-button type="primary">Primary</el-button>
+      <el-button type="success">Success</el-button>
+      <el-button type="info">Info</el-button>
+      <el-button type="warning">Warning</el-button>
+      <el-button type="danger">Danger</el-button>
+    </el-row>
+    <hello></hello>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import hello from '@/components/hello.vue'
 </script>
 
 <style lang="scss" scoped></style>

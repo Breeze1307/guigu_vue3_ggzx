@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 14:19:21
- * @LastEditTime: 2023-11-09 18:53:19
+ * @LastEditTime: 2023-11-28 14:54:32
  * @LastEditors: breeze1307
  */
 import { defineConfig } from 'vite'
@@ -14,6 +14,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve('./src'), // 相对路径别名配置，使用 @ 代替 src
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        javascriptEnabled: true,
+        additionalData: '@import "./src/styles/variable.scss";',
+      },
     },
   },
 })

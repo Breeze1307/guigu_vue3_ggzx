@@ -16,7 +16,7 @@ let pubPath = './MockServer/json/'
 readDir(pubPath)
 
 function readDir(dirFather) {
-    // 读取文件夹
+  // 读取文件夹
   fs.readdir(dirFather, (err, files) => {
     if (err) {
       console.log(err)

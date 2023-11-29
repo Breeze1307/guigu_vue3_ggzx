@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 14:19:21
- * @LastEditTime: 2023-11-28 14:54:32
+ * @LastEditTime: 2023-11-29 17:14:11
  * @LastEditors: breeze1307
  */
 import { defineConfig } from 'vite'
@@ -21,6 +21,15 @@ export default defineConfig({
       scss: {
         javascriptEnabled: true,
         additionalData: '@import "./src/styles/variable.scss";',
+      },
+    },
+  },
+  server: {
+    proxy: {
+      '/mockApi': {
+        target: 'http://localhost:8090',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/mockApi/, ''),
       },
     },
   },

@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "message": "ok",
+  "userList|20": [
+    {
+      "token": "@guid",
+      "name": "@cname",
+      "password": "@word"
+    }
+  ]
+}

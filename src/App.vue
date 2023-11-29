@@ -23,9 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-
 import hello from '@/components/hello.vue'
-
 </script>
 <style lang="scss">
 .qingkong {

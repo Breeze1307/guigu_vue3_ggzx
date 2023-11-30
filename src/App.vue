@@ -6,24 +6,21 @@
  * @LastEditors: breeze1307
 -->
 <template>
-  <div>
-   hello
-  </div>
+  <div>hello</div>
 </template>
 
 <script lang="ts" setup>
-import request from '@/utils/request';
-import { onMounted } from 'vue';
+import request from '@/utils/request'
+import { onMounted } from 'vue'
 onMounted(() => {
   request({
     url: '/user/login',
     method: 'post',
     data: {
       username: 'admin',
-      password:'111111'
-    }
+      password: '111111',
+    },
   })
 })
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

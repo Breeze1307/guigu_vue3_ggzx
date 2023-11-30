@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 14:19:21
- * @LastEditTime: 2023-11-29 17:16:42
+ * @LastEditTime: 2023-11-30 16:34:04
  * @LastEditors: breeze1307
  */
 import { createApp } from 'vue'
@@ -18,5 +18,6 @@ const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn, // element-plus国际化配置
 })
+
 app.component('SvgIcon', SvgIcon)
 app.mount('#app')

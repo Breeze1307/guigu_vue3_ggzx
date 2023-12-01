@@ -39,7 +39,7 @@ function createUserList() {
 userRouter.post('/user/login', (req, res) => {
   const { username, password } = req.body
 
-  const checkUser= createUserList().find((item) => {
+  const checkUser = createUserList().find((item) => {
     return item.username === username && item.password === password
   })
   if (!checkUser) {
@@ -50,7 +50,7 @@ userRouter.post('/user/login', (req, res) => {
       },
     })
   }
-  const  token  = checkUser?.token
+  const token = checkUser?.token
   res.json({
     code: 200,
     data: {

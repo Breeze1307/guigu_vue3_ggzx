@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-30 09:39:12
- * @LastEditTime: 2023-11-30 13:52:54
+ * @LastEditTime: 2023-12-01 10:42:10
  * @LastEditors: breeze1307
  */
 import express from 'express'
@@ -39,7 +39,7 @@ function createUserList() {
 userRouter.post('/user/login', (req, res) => {
   const { username, password } = req.body
 
-  const checkUser = createUserList().find((item) => {
+  const checkUser= createUserList().find((item) => {
     return item.username === username && item.password === password
   })
   if (!checkUser) {
@@ -50,7 +50,7 @@ userRouter.post('/user/login', (req, res) => {
       },
     })
   }
-  const { token } = checkUser
+  const  token  = checkUser?.token
   res.json({
     code: 200,
     data: {

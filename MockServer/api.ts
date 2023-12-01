@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-28 19:49:52
- * @LastEditTime: 2023-11-30 09:48:48
+ * @LastEditTime: 2023-12-01 10:54:38
  * @LastEditors: breeze1307
  */
 import express from 'express'
@@ -15,7 +15,7 @@ let pubPath = './MockServer/json/'
 
 readDir(pubPath)
 
-function readDir(dirFather) {
+function readDir(dirFather:string) {
   // 读取文件夹
   fs.readdir(dirFather, (err, files) => {
     if (err) {
@@ -23,7 +23,7 @@ function readDir(dirFather) {
       return false
     }
     // 遍历./MockServer/json/目录下的文件/文件夹
-    files.forEach((uri, uriIndex) => {
+    files.forEach((uri) => {
       fs.stat(`${dirFather}${uri}`, (errFile, fileType) => {
         if (errFile) {
           console.log(err)
@@ -39,7 +39,7 @@ function readDir(dirFather) {
               /.json/,
               '',
             )}`,
-            function (req, res) {
+            function (_req, res) {
               // 以utf-8格式读取json文件内容
               fs.readFile(`${dirFather}${uri}`, 'utf-8', function (err, data) {
                 if (err) console.log(err)

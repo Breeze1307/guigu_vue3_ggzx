@@ -20,9 +20,9 @@
     "jsx": "preserve",
 
     /* Linting */
-    "strict": false,
+    "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": false,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

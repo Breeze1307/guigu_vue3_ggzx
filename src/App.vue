@@ -2,25 +2,20 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-11-09 17:18:41
- * @LastEditTime: 2023-11-30 17:36:52
+ * @LastEditTime: 2023-12-01 17:23:59
  * @LastEditors: breeze1307
 -->
 <template>
   <div>hello</div>
+  <SvgIcon name="icon-a-paihangbang1"></SvgIcon>
+  <router-view></router-view>
 </template>
 
 <script lang="ts" setup>
-import request from '@/utils/request'
+import { login } from '@/api/user/index'
 import { onMounted } from 'vue'
 onMounted(() => {
-  request({
-    url: '/user/login',
-    method: 'post',
-    data: {
-      username: 'admin',
-      password: '111111',
-    },
-  })
+  login({ username: 'system', password: '111111' })
 })
 </script>
 <style lang="scss"></style>

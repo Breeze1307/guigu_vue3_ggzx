@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 14:19:21
- * @LastEditTime: 2023-11-30 16:34:04
+ * @LastEditTime: 2023-12-01 16:29:44
  * @LastEditors: breeze1307
  */
 import { createApp } from 'vue'
@@ -12,12 +12,16 @@ import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import 'element-plus/dist/index.css'
 import './assets/js/iconfont.js'
-import SvgIcon from '@/components/SvgIcon.vue'
 import '@/styles/index.scss'
+// 引入自定义插件对象：注册整个项目全局组件
+import globalComponent from '@/components'
+// 引入路由并注册
+import router from '@/router'
 const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn, // element-plus国际化配置
 })
-
-app.component('SvgIcon', SvgIcon)
+// 安装自定义插件
+app.use(globalComponent)
+app.use(router)
 app.mount('#app')

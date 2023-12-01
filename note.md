@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 17:10:35
- * @LastEditTime: 2023-11-30 15:33:33
+ * @LastEditTime: 2023-12-01 17:00:32
  * @LastEditors: breeze1307
 -->
 #### **1.husky提交报错**
@@ -31,7 +31,7 @@
 ![20231130110254](https://raw.githubusercontent.com/Breeze1307/img/main/20231130110254.png)  
 解决方案：nodemon无法直接运行ts文件，需要安装`ts-node`插件，`pnpm install -D ts-node`,并在`tsconfig.json`中配置`"ts-node": { "esm": true }`
 
-#### **5.ts检查报错**  
+#### **5.ts检查报错(暴力解决)**  
 
 错误一：  
 ![20231130110602](https://raw.githubusercontent.com/Breeze1307/img/main/20231130110602.png)  
@@ -46,3 +46,62 @@
 ![20231130141354](https://raw.githubusercontent.com/Breeze1307/img/main/20231130141354.png)  
 解决方案：在路由定义前添加`app.use(express.json())`  
 ![20231130141524](https://raw.githubusercontent.com/Breeze1307/img/main/20231130141524.png)  
+
+#### **7.ts报错**  
+(1)   
+![20231201104614](https://raw.githubusercontent.com/Breeze1307/img/main/20231201104614.png)  
+解决方案：`const  token  = checkUser?.token`,检查是否为undefined  
+(2)  
+![20231201105621](https://raw.githubusercontent.com/Breeze1307/img/main/20231201105621.png) 
+当一个变量未使用又不得不包含它的时候，可以使用 _ 作为变量名前缀来表示这个变量是有意未使用的。   
+解决方案：![20231201105806](https://raw.githubusercontent.com/Breeze1307/img/main/20231201105806.png)  
+(3)  
+```ts
+// 引入项目中全部的全局组件
+import SvgIcon from './SvgIcon.vue'
+
+const allGlobalComponent = { SvgIcon }
+
+// 对外暴露插件对象
+export default {
+    // 必须为install，里面包含app应用实例，可以用于注册组件
+    install(app) {
+        Object.keys(allGlobalComponent).forEach(key => {
+            // 注册全局组件
+            app.component(key, allGlobalComponent[key])
+            
+        })
+    }
+}
+```
+错误一：![20231201165237](https://raw.githubusercontent.com/Breeze1307/img/main/20231201165237.png)  
+解决方案：引入`vue`中的`App`作为`app`的类型  
+错误二：![20231201165306](https://raw.githubusercontent.com/Breeze1307/img/main/20231201165306.png)  
+解决方案：定义一个类型接口，其中键是字符串类型，值是 Component 类型或其子类型    
+更改后的代码如下：
+```ts
+// 引入项目中全部的全局组件
+import SvgIcon from './SvgIcon.vue'
+import { App,Component } from 'vue';
+
+interface globalComponents {
+  [key: string]: Component // 这是索引签名的语法，表示可以使用任意字符串键作为对象的键,值为Component类型或其子类型
+}
+
+const allGlobalComponent:globalComponents = { SvgIcon }
+
+// 对外暴露插件对象
+export default {
+    // 必须为install，里面包含app应用实例，可以用于注册组件
+    install(app:App) {
+        Object.keys(allGlobalComponent).forEach((key:string) => {
+            // 注册全局组件
+            app.component(key, allGlobalComponent[key])
+            
+        })
+    }
+}
+```
+
+
+

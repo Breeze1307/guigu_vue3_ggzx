@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+代码.zip
 dist-ssr
 *.local
 

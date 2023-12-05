@@ -18,10 +18,22 @@
               <el-input v-model="loginInfo.username" :prefix-icon="User" />
             </el-form-item>
             <el-form-item>
-              <el-input v-model="loginInfo.password" :prefix-icon="Lock" type="password" placeholder="请输入密码"
-                show-password />
+              <el-input
+                v-model="loginInfo.password"
+                :prefix-icon="Lock"
+                type="password"
+                placeholder="请输入密码"
+                show-password
+              />
             </el-form-item>
-            <el-button :loading="loading" type="primary" class="login-btn" @click="login">登录</el-button>
+            <el-button
+              :loading="loading"
+              type="primary"
+              class="login-btn"
+              @click="login"
+            >
+              登录
+            </el-button>
           </div>
         </el-form>
       </el-col>
@@ -32,29 +44,32 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
-import useUserStore from '@/store/modules/user';
-import { ElNotification } from 'element-plus';
-import { useRouter } from 'vue-router';
+import useUserStore from '@/store/modules/user'
+import { ElNotification } from 'element-plus'
+import { useRouter } from 'vue-router'
 let loginInfo = reactive({ username: 'admin', password: '111111' })
 let userStore = useUserStore()
 let $router = useRouter()
 let loading = ref(false)
 const login = () => {
   loading.value = true
-  userStore.userLogin(loginInfo).then(() => {
-    $router.push('/')
-    ElNotification({
-      type: 'success',
-      message: '登录成功'
+  userStore
+    .userLogin(loginInfo)
+    .then(() => {
+      $router.push('/')
+      ElNotification({
+        type: 'success',
+        message: '登录成功',
+      })
+      loading.value = true
     })
-    loading.value = true
-  }).catch((err) => {
-    ElNotification({
-      type: 'error',
-      message: err.message
+    .catch((err) => {
+      ElNotification({
+        type: 'error',
+        message: err.message,
+      })
+      loading.value = false
     })
-    loading.value = false
-  })
 }
 </script>
 
@@ -95,7 +110,6 @@ const login = () => {
       .login-btn {
         width: 100%;
       }
-
     }
   }
 }

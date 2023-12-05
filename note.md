@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 17:10:35
- * @LastEditTime: 2023-12-01 17:00:32
+ * @LastEditTime: 2023-12-05 17:14:34
  * @LastEditors: breeze1307
 -->
 #### **1.husky提交报错**
@@ -102,6 +102,9 @@ export default {
     }
 }
 ```
+(4)  
+![20231205171233](https://raw.githubusercontent.com/Breeze1307/img/main/20231205171233.png)   
+解决方案：使用类型断言`as`,在此案例中如`(result.data.token) as string`  
 
 
 

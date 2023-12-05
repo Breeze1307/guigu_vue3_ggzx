@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 14:19:21
- * @LastEditTime: 2023-12-01 16:29:44
+ * @LastEditTime: 2023-12-04 17:26:43
  * @LastEditors: breeze1307
  */
 import { createApp } from 'vue'
@@ -17,11 +17,16 @@ import '@/styles/index.scss'
 import globalComponent from '@/components'
 // 引入路由并注册
 import router from '@/router'
+// 引入仓库
+import pinia from './store'
 const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn, // element-plus国际化配置
 })
 // 安装自定义插件
 app.use(globalComponent)
+// 注册模板路由
 app.use(router)
+// 安装仓库
+app.use(pinia)
 app.mount('#app')

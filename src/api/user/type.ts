@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-30 09:27:09
- * @LastEditTime: 2023-12-01 10:54:52
+ * @LastEditTime: 2023-12-05 16:59:25
  * @LastEditors: breeze1307
  */
 // 登录接口需要携带参数ts类型
@@ -11,7 +11,8 @@ export interface loginForm {
   password: string
 }
 interface dataType {
-  token: string
+  token?: string
+  message?: string
 }
 // 登录接口返回数据类型
 export interface loginResponseData {

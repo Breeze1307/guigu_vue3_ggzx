@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-30 09:39:12
- * @LastEditTime: 2023-12-01 10:42:10
+ * @LastEditTime: 2023-12-05 15:26:07
  * @LastEditors: breeze1307
  */
 import express from 'express'
@@ -42,6 +42,7 @@ userRouter.post('/user/login', (req, res) => {
   const checkUser = createUserList().find((item) => {
     return item.username === username && item.password === password
   })
+
   if (!checkUser) {
     res.json({
       code: 201,
@@ -49,14 +50,15 @@ userRouter.post('/user/login', (req, res) => {
         message: '账号或者密码不正确',
       },
     })
+  } else {
+    const token = checkUser?.token
+    res.json({
+      code: 200,
+      data: {
+        token,
+      },
+    })
   }
-  const token = checkUser?.token
-  res.json({
-    code: 200,
-    data: {
-      token,
-    },
-  })
 })
 
 userRouter.get('/user/info', (req, res) => {

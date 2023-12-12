@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-01 15:05:42
- * @LastEditTime: 2023-12-12 16:32:38
+ * @LastEditTime: 2023-12-12 17:14:08
  * @LastEditors: breeze1307
  */
 export const constantRoute = [
@@ -75,7 +75,7 @@ export const constantRoute = [
     children: [
       {
         // 品牌管理
-        path: '/product/trademark ',
+        path: '/product/trademark',
         name: 'Trademark',
         component: () => import('@/views/product/trademark/index.vue'),
         meta: { title: '品牌管理', icon: 'ShoppingCartFull' },

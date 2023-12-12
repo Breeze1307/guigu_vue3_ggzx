@@ -11,7 +11,11 @@
     <div class="layout-slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-        <el-menu background-color="#282c34" text-color="#fff" :default-active="$route.path">
+        <el-menu
+          background-color="#282c34"
+          text-color="#fff"
+          :default-active="$route.path"
+        >
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>

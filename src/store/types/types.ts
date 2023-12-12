@@ -2,9 +2,11 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-05 17:00:50
- * @LastEditTime: 2023-12-05 17:16:43
+ * @LastEditTime: 2023-12-12 10:15:25
  * @LastEditors: breeze1307
  */
+import { RouteRecordRaw } from 'vue-router'
 export interface useState {
   token: string | null
+  menuRoutes: RouteRecordRaw[] // 路由列表类型
 }

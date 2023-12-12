@@ -1,2 +1,21 @@
 // 引入清楚默认样式
-@import './reset.scss'
+@import './reset.scss';
+
+//  更改滚动条样式
+// 控制滚动条的宽度
+::-webkit-scrollbar{
+    width: 10px;
+}
+// 控制滚动条滑块的颜色、圆角
+::-webkit-scrollbar-thumb{
+background: $base-content-background;
+border-radius: 20px;
+}
+// 控制滚动条的轨道的背景
+::-webkit-scrollbar-track{
+    background: $base-menu-background;
+}
+// 去掉菜单右侧横线
+.el-menu{
+    border-right: 0;
+}

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-07 14:58:03
- * @LastEditTime: 2023-12-12 10:59:21
+ * @LastEditTime: 2023-12-12 16:45:36
  * @LastEditors: breeze1307
 -->
 <template>
@@ -19,7 +19,9 @@
     <!-- 顶部 -->
     <div class="layout-tabber">tabber</div>
     <!-- 内容区 -->
-    <div class="layout-content"><p>dfgn</p></div>
+    <div class="layout-content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -58,6 +60,7 @@ let userStore = useUserStore()
     width: calc(100% - $base-menu-width);
     height: calc(100vh - $base-tabber-height);
     background: $base-content-background;
+    padding: 20px;
     overflow: auto;
   }
 }

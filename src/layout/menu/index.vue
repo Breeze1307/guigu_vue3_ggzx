@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 10:06:13
- * @LastEditTime: 2023-12-12 15:06:03
+ * @LastEditTime: 2023-12-12 16:39:20
  * @LastEditors: breeze1307
 -->
 <template>
@@ -54,9 +54,11 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from 'vue-router';
 defineProps(['menuList'])
+let $router=useRouter()
 const goRoute = (menuVc: any) => {
-  console.log(menuVc.index)
+  $router.push(menuVc.index)
 }
 </script>
 

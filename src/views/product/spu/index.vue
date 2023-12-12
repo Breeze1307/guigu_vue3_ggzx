@@ -1,0 +1,20 @@
+<!--
+ * @Description: 
+ * @Author: breeze1307
+ * @Date: 2023-12-12 15:53:59
+ * @LastEditTime: 2023-12-12 15:56:06
+ * @LastEditors: breeze1307
+-->
+<template>
+    <div>
+        <h1>spu管理</h1>
+    </div>
+</template>
+
+<script lang="ts" setup>
+
+</script>
+
+<style lang="scss" scoped>
+
+</style>

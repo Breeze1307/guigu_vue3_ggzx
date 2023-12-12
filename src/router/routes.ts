@@ -11,7 +11,7 @@ export const constantRoute = [
     path: '/login',
     component: () => import('@/views/login/index.vue'),
     name: 'Login',
-    meta: { title: '登录', hidden:true, icon: 'HomeFilled' },
+    meta: { title: '登录', hidden: true, icon: 'HomeFilled' },
   },
   {
     // 首页

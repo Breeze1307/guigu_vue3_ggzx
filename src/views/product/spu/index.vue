@@ -6,15 +6,11 @@
  * @LastEditors: breeze1307
 -->
 <template>
-    <div>
-        <h1>spu管理</h1>
-    </div>
+  <div>
+    <h1>spu管理</h1>
+  </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

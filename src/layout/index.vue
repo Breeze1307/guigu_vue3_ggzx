@@ -71,4 +71,3 @@ let $route = useRoute()
   }
 }
 </style>
-

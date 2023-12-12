@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 10:06:13
- * @LastEditTime: 2023-12-12 16:39:20
+ * @LastEditTime: 2023-12-12 16:58:13
  * @LastEditors: breeze1307
 -->
 <template>
@@ -14,10 +14,10 @@
         v-if="!menuItem.meta.hidden"
         @click="goRoute"
       >
+        <el-icon>
+          <component :is="menuItem.meta.icon"></component>
+        </el-icon>
         <template #title>
-          <el-icon>
-            <component :is="menuItem.meta.icon"></component>
-          </el-icon>
           <span>{{ menuItem.meta.title }}</span>
         </template>
       </el-menu-item>
@@ -29,10 +29,10 @@
         v-if="!menuItem.children[0].meta.hidden"
         @click="goRoute"
       >
+        <el-icon>
+          <component :is="menuItem.children[0].meta.icon"></component>
+        </el-icon>
         <template #title>
-          <el-icon>
-            <component :is="menuItem.children[0].meta.icon"></component>
-          </el-icon>
           <span>{{ menuItem.children[0].meta.title }}</span>
         </template>
       </el-menu-item>

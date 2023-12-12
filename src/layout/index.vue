@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-07 14:58:03
- * @LastEditTime: 2023-12-12 16:45:36
+ * @LastEditTime: 2023-12-12 17:04:09
  * @LastEditors: breeze1307
 -->
 <template>
@@ -11,7 +11,7 @@
     <div class="layout-slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-        <el-menu background-color="#282c34" text-color="#fff">
+        <el-menu background-color="#282c34" text-color="#fff" :default-active="$route.path">
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
@@ -26,10 +26,12 @@
 </template>
 
 <script lang="ts" setup>
+import { useRoute } from 'vue-router'
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
 import useUserStore from '@/store/modules/user'
 let userStore = useUserStore()
+let $route = useRoute()
 </script>
 
 <style lang="scss" scoped>

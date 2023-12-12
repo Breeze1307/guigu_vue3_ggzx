@@ -33,7 +33,7 @@ export const constantRoute = [
     path: '/404',
     component: () => import('@/views/404/index.vue'),
     name: '404',
-    meta: { title: '404', hidden: true, icon: 'HomeFilled' }
+    meta: { title: '404', hidden: true, icon: 'HomeFilled' },
   },
   {
     // 任意路由，匹配不到路由重定向到404

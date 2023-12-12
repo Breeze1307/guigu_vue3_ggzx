@@ -11,7 +11,6 @@ import SvgIcon from './SvgIcon.vue'
 import { App, Component } from 'vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-
 interface globalComponents {
   [key: string]: Component // 这是索引签名的语法，表示可以使用任意字符串键作为对象的键,值为Component类型或其子类型
 }

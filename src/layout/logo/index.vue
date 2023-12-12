@@ -6,32 +6,32 @@
  * @LastEditors: breeze1307
 -->
 <template>
-    <div class="logo" v-if="!setting.logoHidden">
-        <img :src="setting.logo" alt="">
-        <span>{{ setting.title }}</span>
-    </div>
+  <div class="logo" v-if="!setting.logoHidden">
+    <img :src="setting.logo" alt="" />
+    <span>{{ setting.title }}</span>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import setting from '@/setting';
+import setting from '@/setting'
 </script>
 
 <style lang="scss" scoped>
-.logo{
-    width: 100%;
-    height: $base-menu-logo-height;
-    color: $base-menu-color;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    img{
-        width: 40px;
-        height: 40px;
-    }
-    span{
-        font-size: $base-logo-title-fontSize;
-        font-weight: bold;
-        margin-left: 10px;
-    }
+.logo {
+  width: 100%;
+  height: $base-menu-logo-height;
+  color: $base-menu-color;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  span {
+    font-size: $base-logo-title-fontSize;
+    font-weight: bold;
+    margin-left: 10px;
+  }
 }
-</style>            
+</style>

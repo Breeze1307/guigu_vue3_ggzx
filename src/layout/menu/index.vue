@@ -9,7 +9,11 @@
   <template v-for="menuItem in menuList" :key="menuItem.path">
     <!--单个菜单 -->
     <template v-if="!menuItem.children">
-      <el-menu-item :index="menuItem.path" v-if="!menuItem.meta.hidden" @click="goRoute">
+      <el-menu-item
+        :index="menuItem.path"
+        v-if="!menuItem.meta.hidden"
+        @click="goRoute"
+      >
         <template #title>
           <el-icon>
             <component :is="menuItem.meta.icon"></component>
@@ -51,9 +55,8 @@
 
 <script lang="ts" setup>
 defineProps(['menuList'])
-const goRoute = (menuVc:any) => {
-  console.log(menuVc.index);
-  
+const goRoute = (menuVc: any) => {
+  console.log(menuVc.index)
 }
 </script>
 

@@ -8,7 +8,10 @@
 <template>
   <div class="layout-container">
     <!-- 侧边 -->
-    <div class="layout-slider" :class="{fold:layoutStore.fold?true:false}">
+    <div
+      class="layout-slider"
+      :class="{ fold: layoutStore.fold ? true : false }"
+    >
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
         <el-menu
@@ -22,11 +25,17 @@
       </el-scrollbar>
     </div>
     <!-- 顶部 -->
-    <div class="layout-tabbar" :class="{fold:layoutStore.fold?true:false}">
+    <div
+      class="layout-tabbar"
+      :class="{ fold: layoutStore.fold ? true : false }"
+    >
       <Tabbar></Tabbar>
     </div>
     <!-- 内容区 -->
-    <div class="layout-content" :class="{fold:layoutStore.fold?true:false}">
+    <div
+      class="layout-content"
+      :class="{ fold: layoutStore.fold ? true : false }"
+    >
       <router-view></router-view>
     </div>
   </div>
@@ -36,10 +45,10 @@
 import { useRoute } from 'vue-router'
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
-import Tabbar from './tabbar/index.vue';
+import Tabbar from './tabbar/index.vue'
 import useUserStore from '@/store/modules/user'
-import useLayoutStore from '@/store/modules/setting';
-let layoutStore=useLayoutStore()
+import useLayoutStore from '@/store/modules/setting'
+let layoutStore = useLayoutStore()
 let userStore = useUserStore()
 let $route = useRoute()
 </script>
@@ -54,7 +63,7 @@ let $route = useRoute()
     height: 100vh;
     background: $base-menu-background;
     transition: all 0.3s;
-    &.fold{
+    &.fold {
       width: $base-menu-min-width;
     }
     .scrollbar {
@@ -69,9 +78,9 @@ let $route = useRoute()
     width: calc(100% - $base-menu-width);
     height: $base-tabbar-height;
     transition: all 0.3s;
-    &.fold{
+    &.fold {
       width: calc(100% - $base-menu-min-width);
-      left:$base-menu-min-width
+      left: $base-menu-min-width;
     }
   }
   .layout-content {
@@ -84,9 +93,9 @@ let $route = useRoute()
     padding: 20px;
     overflow: auto;
     transition: all 0.3s;
-    &.fold{
+    &.fold {
       width: calc(100% - $base-menu-min-width);
-      left:$base-menu-min-width
+      left: $base-menu-min-width;
     }
   }
 }

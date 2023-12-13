@@ -9,7 +9,7 @@
   <div class="tabbar">
     <div class="tabbar-left">
       <el-icon @click="changeIcon">
-        <component :is="layoutStore.fold?'Fold':'Expand'"></component>
+        <component :is="layoutStore.fold ? 'Fold' : 'Expand'"></component>
       </el-icon>
     </div>
     <div class="tabbar-right">456</div>
@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts" setup>
-import useLayoutStore from '@/store/modules/setting';
-let layoutStore=useLayoutStore()
+import useLayoutStore from '@/store/modules/setting'
+let layoutStore = useLayoutStore()
 const changeIcon = () => {
   layoutStore.fold = !layoutStore.fold
 }

@@ -14,8 +14,8 @@
 
 <script lang="ts" setup>
 import setting from '@/setting'
-import useLayoutStore from '@/store/modules/setting';
-let layoutStore=useLayoutStore()
+import useLayoutStore from '@/store/modules/setting'
+let layoutStore = useLayoutStore()
 </script>
 
 <style lang="scss" scoped>

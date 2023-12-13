@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-01 15:05:42
- * @LastEditTime: 2023-12-12 17:14:08
+ * @LastEditTime: 2023-12-13 16:33:57
  * @LastEditors: breeze1307
  */
 export const constantRoute = [
@@ -18,7 +18,7 @@ export const constantRoute = [
     path: '/',
     component: () => import('@/layout/index.vue'),
     name: 'Layout',
-    meta: { title: '布局页面' },
+    meta: { title: '' },
     redirect: '/home',
     children: [
       {
@@ -42,6 +42,7 @@ export const constantRoute = [
     name: 'Acl',
     component: () => import('@/layout/index.vue'),
     meta: { title: '权限管理', hidden: false, icon: 'Lock' },
+    redirect: '/acl/user',
     children: [
       {
         // 用户管理
@@ -72,6 +73,7 @@ export const constantRoute = [
     component: () => import('@/layout/index.vue'),
     name: 'Product',
     meta: { title: '商品管理', icon: 'Goods' },
+    redirect: '/product/trademark',
     children: [
       {
         // 品牌管理

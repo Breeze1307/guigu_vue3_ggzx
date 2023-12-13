@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-07 14:58:03
- * @LastEditTime: 2023-12-13 15:13:47
+ * @LastEditTime: 2023-12-13 19:58:28
  * @LastEditors: breeze1307
 -->
 <template>
@@ -35,13 +35,15 @@
     <div
       class="layout-content"
       :class="{ fold: layoutStore.fold ? true : false }"
+      v-loading="layoutStore.loading"
     >
-      <router-view></router-view>
+      <router-view v-if="flag"></router-view>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { watch, ref, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
@@ -51,6 +53,20 @@ import useLayoutStore from '@/store/modules/setting'
 let layoutStore = useLayoutStore()
 let userStore = useUserStore()
 let $route = useRoute()
+// 组件销毁/显示
+let flag = ref(true)
+// 监听refresh数据是否发生变化
+watch(
+  () => layoutStore.refresh,
+  () => {
+    flag.value = false
+    // dom加载完毕，重新加载组件
+    nextTick(() => {
+      flag.value = true
+      layoutStore.loading = false
+    })
+  },
+)
 </script>
 
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-13 11:27:23
- * @LastEditTime: 2023-12-13 20:00:08
+ * @LastEditTime: 2023-12-14 14:30:01
  * @LastEditors: breeze1307
 -->
 <template>
@@ -36,17 +36,17 @@
       <el-button icon="Refresh" circle @click="goRefresh"></el-button>
       <el-button icon="FullScreen" circle @click="setFullScreen"></el-button>
       <el-button icon="Setting" circle></el-button>
-      <el-avatar :size="32" src="../../../public/logo.png" class="avater" />
+      <el-avatar :size="32" :src="userStore.avatar" class="avater" />
       <el-dropdown>
         <span>
-          admin
+          {{ userStore.username }}
           <el-icon>
             <component is="ArrowDown"></component>
           </el-icon>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>退出登录</el-dropdown-item>
+            <el-dropdown-item @click="logOut">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -56,9 +56,11 @@
 
 <script lang="ts" setup>
 import useLayoutStore from '@/store/modules/setting'
-import { useRoute } from 'vue-router'
+import useUserStore from '@/store/modules/user'
+import { useRoute, useRouter } from 'vue-router'
 let $route = useRoute()
-
+let $router = useRouter()
+let userStore = useUserStore()
 let layoutStore = useLayoutStore()
 // 折叠
 const changeIcon = () => {
@@ -79,6 +81,11 @@ const setFullScreen = () => {
     // 退出全屏
     document.exitFullscreen()
   }
+}
+// 退出登录
+const logOut = () => {
+  userStore.userLogout()
+  $router.push({ path: '/login', query: { redirect: $route.path } })
 }
 </script>
 

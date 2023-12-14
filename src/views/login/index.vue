@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-01 14:24:15
- * @LastEditTime: 2023-12-06 19:39:11
+ * @LastEditTime: 2023-12-14 14:41:37
  * @LastEditors: breeze1307
 -->
 <template>
@@ -51,9 +51,10 @@ import { reactive, ref } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
 import useUserStore from '@/store/modules/user'
 import { ElNotification } from 'element-plus'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 // 引入获取当前时间函数
 import { getTime } from '@/utils/time'
+import { $ } from 'vue/macros'
 // 表单校验 form
 // 收集账号和密码的数据
 let loginInfo = reactive({ username: 'admin', password: '111111' })
@@ -61,6 +62,8 @@ let loginInfo = reactive({ username: 'admin', password: '111111' })
 let userStore = useUserStore()
 // 获取路由器
 let $router = useRouter()
+// 获取当前路由信息
+let $route = useRoute()
 // 控制按钮加载效果
 let loading = ref(false)
 const loginFormRef = ref()
@@ -73,7 +76,7 @@ const login = async () => {
   await userStore
     .userLogin(loginInfo)
     .then(() => {
-      $router.push('/')
+      $router.push(($route.query.redirect as string) || '/')
       ElNotification({
         type: 'success',
         title: `Hi,${getTime()}好`,

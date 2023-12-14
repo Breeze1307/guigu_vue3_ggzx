@@ -7,8 +7,8 @@
  */
 import { RouteRecordRaw } from 'vue-router'
 export interface useState {
-  token: string | null,
-  menuRoutes: RouteRecordRaw[], // 路由列表类型
-  username: string,
-  avatar: string,
+  token: string | null
+  menuRoutes: RouteRecordRaw[] // 路由列表类型
+  username: string
+  avatar: string
 }

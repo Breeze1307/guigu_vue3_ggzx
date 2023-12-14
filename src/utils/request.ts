@@ -7,7 +7,7 @@
  */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import useUserStore from '@/store/modules/user';
+import useUserStore from '@/store/modules/user'
 let http = axios.create({
   baseURL: import.meta.env.VITE_APP_MOCK_API,
   timeout: 5000,

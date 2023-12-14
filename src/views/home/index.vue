@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-import useUserStore from '@/store/modules/user';
-let userStore=useUserStore()
+import useUserStore from '@/store/modules/user'
+let userStore = useUserStore()
 import { onMounted } from 'vue'
 onMounted(() => {
   userStore.userInfo()

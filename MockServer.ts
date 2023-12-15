@@ -14,10 +14,13 @@ app.use(express.json())
 
 import router from './MockServer/api.ts'
 import userRouter from './MockServer/user.ts'
-app.use('*',function(_req, res, next){
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT,GET,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type,token');
+app.use('*', function (_req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'PUT,GET,POST,DELETE,OPTIONS')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With,Content-Type,token',
+  )
   next()
 })
 app.use(router)

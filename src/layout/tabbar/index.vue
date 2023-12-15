@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-13 11:27:23
- * @LastEditTime: 2023-12-14 14:30:01
+ * @LastEditTime: 2023-12-15 14:15:58
  * @LastEditors: breeze1307
 -->
 <template>
@@ -96,7 +96,7 @@ const logOut = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // background: red;
+  background: white;
   .tabbar-left {
     display: flex;
     margin-left: 20px;

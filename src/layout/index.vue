@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-07 14:58:03
- * @LastEditTime: 2023-12-13 19:58:28
+ * @LastEditTime: 2023-12-15 14:14:37
  * @LastEditors: breeze1307
 -->
 <template>
@@ -10,7 +10,6 @@
     <!-- 侧边 -->
     <div
       class="layout-slider"
-      :class="{ fold: layoutStore.fold ? true : false }"
     >
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
@@ -78,10 +77,6 @@ watch(
     width: $base-menu-width;
     height: 100vh;
     background: $base-menu-background;
-    transition: all 0.3s;
-    &.fold {
-      width: $base-menu-min-width;
-    }
     .scrollbar {
       width: 100%;
       height: calc(100vh - $base-tabbar-height);

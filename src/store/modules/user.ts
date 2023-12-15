@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-04 17:29:39
- * @LastEditTime: 2023-12-14 14:23:38
+ * @LastEditTime: 2023-12-15 11:10:35
  * @LastEditors: breeze1307
  */
 import { defineStore } from 'pinia'
@@ -46,6 +46,9 @@ let useUserStore = defineStore('User', {
       if (result.code == 200) {
         this.username = result.data.checkUser.username
         this.avatar = result.data.checkUser.avatar
+        return 'ok'
+      } else {
+        return Promise.reject('获取用户信息失败')
       }
     },
     userLogout() {

@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 14:19:21
- * @LastEditTime: 2023-12-04 17:26:43
+ * @LastEditTime: 2023-12-14 16:30:06
  * @LastEditors: breeze1307
  */
 import { createApp } from 'vue'
@@ -29,4 +29,6 @@ app.use(globalComponent)
 app.use(router)
 // 安装仓库
 app.use(pinia)
+// 引入路由鉴权文件
+import './permission';
 app.mount('#app')

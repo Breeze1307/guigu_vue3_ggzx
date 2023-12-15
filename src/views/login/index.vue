@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-01 14:24:15
- * @LastEditTime: 2023-12-14 14:41:37
+ * @LastEditTime: 2023-12-15 11:30:09
  * @LastEditors: breeze1307
 -->
 <template>
@@ -54,7 +54,6 @@ import { ElNotification } from 'element-plus'
 import { useRouter, useRoute } from 'vue-router'
 // 引入获取当前时间函数
 import { getTime } from '@/utils/time'
-import { $ } from 'vue/macros'
 // 表单校验 form
 // 收集账号和密码的数据
 let loginInfo = reactive({ username: 'admin', password: '111111' })

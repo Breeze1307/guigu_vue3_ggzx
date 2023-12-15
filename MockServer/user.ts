@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-30 09:39:12
- * @LastEditTime: 2023-12-05 15:26:07
+ * @LastEditTime: 2023-12-15 11:18:48
  * @LastEditors: breeze1307
  */
 import express from 'express'
@@ -73,12 +73,13 @@ userRouter.get('/user/info', (req, res) => {
         message: '获取用户信息失败',
       },
     })
+  } else {
+    res.json({
+      code: 200,
+      data: {
+        checkUser,
+      },
+    })
   }
-  res.json({
-    code: 200,
-    data: {
-      checkUser,
-    },
-  })
 })
 export default userRouter

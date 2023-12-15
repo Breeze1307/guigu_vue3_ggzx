@@ -10,7 +10,7 @@ import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 nprogress.configure({ showSpinner: false })
 import pinia from '@/store/index'
-import setting from '@/setting';
+import setting from '@/setting'
 import { ElNotification } from 'element-plus'
 import useUserStore from '@/store/modules/user'
 let userStore = useUserStore(pinia)
@@ -18,7 +18,7 @@ let userStore = useUserStore(pinia)
 router.beforeEach(async (to, from, next) => {
   // to and from are both route objects. must call `next`.
   // 设置网页标签标题
-  document.title=`${setting.title} - ${to.meta.title}`
+  document.title = `${setting.title} - ${to.meta.title}`
   // 访问路由之前触发
   nprogress.start()
   // 已登录
@@ -33,7 +33,7 @@ router.beforeEach(async (to, from, next) => {
           // 没有用户名、获取用户名，成功后跳转
           await userStore.userInfo()
           next()
-        } catch (error:any) {
+        } catch (error: any) {
           ElNotification({
             type: 'error',
             message: error,

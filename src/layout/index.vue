@@ -8,9 +8,7 @@
 <template>
   <div class="layout-container">
     <!-- 侧边 -->
-    <div
-      class="layout-slider"
-    >
+    <div class="layout-slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
         <el-menu

@@ -30,5 +30,5 @@ app.use(router)
 // 安装仓库
 app.use(pinia)
 // 引入路由鉴权文件
-import './permission';
+import './permission'
 app.mount('#app')

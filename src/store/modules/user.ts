@@ -2,12 +2,12 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-04 17:29:39
- * @LastEditTime: 2023-12-18 16:48:03
+ * @LastEditTime: 2023-12-18 17:04:26
  * @LastEditors: breeze1307
  */
 import { defineStore } from 'pinia'
 // 登录接口
-import { login, getUserInfo,logOut } from '@/api/user'
+import { login, getUserInfo, logOut } from '@/api/user'
 // 参数类型
 import type {
   loginForm,

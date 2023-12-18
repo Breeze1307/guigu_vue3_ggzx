@@ -2,7 +2,7 @@
  * @Description: 路由鉴权
  * @Author: breeze1307
  * @Date: 2023-12-14 14:53:05
- * @LastEditTime: 2023-12-15 14:19:20
+ * @LastEditTime: 2023-12-18 15:57:39
  * @LastEditors: breeze1307
  */
 import router from '@/router'
@@ -41,7 +41,7 @@ router.beforeEach(async (to, from, next) => {
           // token过期
           // 用户手动修改了token
           // 退出登录
-          userStore.userLogout()
+          await userStore.userLogout()
           next({ path: '/login', query: { redirect: to.path } })
         }
       }

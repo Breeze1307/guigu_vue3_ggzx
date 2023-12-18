@@ -2,14 +2,14 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-27 16:36:58
- * @LastEditTime: 2023-12-14 10:29:07
+ * @LastEditTime: 2023-12-18 14:46:56
  * @LastEditors: breeze1307
  */
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import useUserStore from '@/store/modules/user'
 let http = axios.create({
-  baseURL: import.meta.env.VITE_APP_MOCK_API,
+  baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
 })
 // 请求拦截器

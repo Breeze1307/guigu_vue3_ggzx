@@ -2,14 +2,18 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-04 17:29:39
- * @LastEditTime: 2023-12-15 11:10:35
+ * @LastEditTime: 2023-12-18 16:48:03
  * @LastEditors: breeze1307
  */
 import { defineStore } from 'pinia'
 // 登录接口
-import { login, getUserInfo } from '@/api/user'
+import { login, getUserInfo,logOut } from '@/api/user'
 // 参数类型
-import type { loginForm, loginResponseData } from '@/api/user/type'
+import type {
+  loginForm,
+  loginResponseData,
+  userResponseData,
+} from '@/api/user/type'
 // state类型
 import type { useState } from '@/store/types/types'
 // token函数
@@ -32,30 +36,36 @@ let useUserStore = defineStore('User', {
       let result: loginResponseData = await login(data)
       // 存储token
       if (result.code == 200) {
-        this.token = result.data.token as string
+        this.token = result.data as string
         // 本地存储
-        SET_TOKEN(result.data.token as string)
+        SET_TOKEN(result.data as string)
         return 'ok'
       } else {
         // 返回错误值
-        return Promise.reject(new Error(result.data.message))
+        return Promise.reject(new Error(result.data))
       }
     },
     async userInfo() {
-      let result = await getUserInfo()
+      let result: userResponseData = await getUserInfo()
       if (result.code == 200) {
-        this.username = result.data.checkUser.username
-        this.avatar = result.data.checkUser.avatar
+        this.username = result.data.name
+        this.avatar = result.data.avatar
         return 'ok'
       } else {
-        return Promise.reject('获取用户信息失败')
+        return Promise.reject(new Error(result.message))
       }
     },
-    userLogout() {
-      this.username = ''
-      this.avatar = ''
-      this.token = ''
-      REMOVE_TOKEN()
+    async userLogout() {
+      let result = await logOut()
+      if (result.code == 200) {
+        this.username = ''
+        this.avatar = ''
+        this.token = ''
+        REMOVE_TOKEN()
+        return 'ok'
+      } else {
+        Promise.reject(new Error(result.message))
+      }
     },
   },
   getters: {},

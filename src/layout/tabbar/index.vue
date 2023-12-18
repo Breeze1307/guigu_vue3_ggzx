@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-13 11:27:23
- * @LastEditTime: 2023-12-15 14:15:58
+ * @LastEditTime: 2023-12-18 15:51:37
  * @LastEditors: breeze1307
 -->
 <template>
@@ -83,8 +83,8 @@ const setFullScreen = () => {
   }
 }
 // 退出登录
-const logOut = () => {
-  userStore.userLogout()
+const logOut =async () => {
+  await userStore.userLogout()
   $router.push({ path: '/login', query: { redirect: $route.path } })
 }
 </script>

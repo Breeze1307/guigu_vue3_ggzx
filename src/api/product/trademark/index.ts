@@ -6,7 +6,7 @@
  * @LastEditors: breeze1307
  */
 import request from '@/utils/request'
-import type { TrademarkResponseData,Trademark} from './types'
+import type { TrademarkResponseData, Trademark } from './types'
 // 请求已有品牌
 export const reqHasTrademark = (page: number, limit: number) =>
   request.get<any, TrademarkResponseData>(
@@ -14,7 +14,7 @@ export const reqHasTrademark = (page: number, limit: number) =>
   )
 // 删除已有品牌
 export const reqDeleteTrademark = (id: number) =>
-    request.delete(`/admin/product/baseTrademark/remove/${id}`)
+  request.delete(`/admin/product/baseTrademark/remove/${id}`)
 // 新增/修改品牌
 export const reqAddOrUpdateTrademark = (data: Trademark) => {
   if (data.id) {

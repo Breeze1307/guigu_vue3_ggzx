@@ -9,11 +9,11 @@
   <el-card class="box-card">
     <el-button icon="Plus" type="primary">添加品牌</el-button>
     <el-table border :data="trademarkArr">
-      <el-table-column label="序号" type="index" width="80" align="center"/>
-      <el-table-column label="品牌名称" prop="tmName"/>
+      <el-table-column label="序号" type="index" width="80" align="center" />
+      <el-table-column label="品牌名称" prop="tmName" />
       <el-table-column label="品牌LOGO">
-        <template #={row}>
-          <img :src="row.logoUrl" alt="" style="width:100px;height:100px">
+        <template #="{ row }">
+          <img :src="row.logoUrl" alt="" style="width: 100px; height: 100px" />
         </template>
       </el-table-column>
       <el-table-column label="品牌操作">
@@ -36,9 +36,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref,onMounted } from 'vue'
-import { reqHasTrademark } from '@/api/product/trademark';
-import type{ TrademarkResponseData,Records } from '@/api/product/trademark/types';
+import { ref, onMounted } from 'vue'
+import { reqHasTrademark } from '@/api/product/trademark'
+import type {
+  TrademarkResponseData,
+  Records,
+} from '@/api/product/trademark/types'
 // 当前页数
 let pageNo = ref<number>(1)
 // 每页展示条数
@@ -46,13 +49,16 @@ let limit = ref<number>(3)
 // 已有品牌总数
 let total = ref<number>(0)
 // 存储已有品牌数据
-let trademarkArr=ref<Records>([])
+let trademarkArr = ref<Records>([])
 // 获取已有品牌信息
-const getHasTrademark =async () => {
-  let result:TrademarkResponseData=await reqHasTrademark(pageNo.value,limit.value)
+const getHasTrademark = async () => {
+  let result: TrademarkResponseData = await reqHasTrademark(
+    pageNo.value,
+    limit.value,
+  )
   if (result.code == 200) {
     trademarkArr.value = result.data.records
-    total.value=result.data.total
+    total.value = result.data.total
   }
 }
 onMounted(() => {

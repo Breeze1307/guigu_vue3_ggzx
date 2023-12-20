@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-19 09:55:03
- * @LastEditTime: 2023-12-19 17:00:54
+ * @LastEditTime: 2023-12-20 20:02:07
  * @LastEditors: breeze1307
  */
 import request from '@/utils/request'
@@ -18,8 +18,8 @@ export const reqDeleteTrademark = (id: number) =>
 // 新增/修改品牌
 export const reqAddOrUpdateTrademark = (data: Trademark) => {
   if (data.id) {
-    request.put('/admin/cdoprtu/baseTrademark/update', data)
+    return request.put<any, any>('/admin/product/baseTrademark/update', data)
   } else {
-    request.post('/admin/product/baseTrademark/save', data)
+    return request.post<any,any>('/admin/product/baseTrademark/save', data)
   }
 }

@@ -20,6 +20,6 @@ export const reqAddOrUpdateTrademark = (data: Trademark) => {
   if (data.id) {
     return request.put<any, any>('/admin/product/baseTrademark/update', data)
   } else {
-    return request.post<any,any>('/admin/product/baseTrademark/save', data)
+    return request.post<any, any>('/admin/product/baseTrademark/save', data)
   }
 }

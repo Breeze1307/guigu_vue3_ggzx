@@ -63,7 +63,7 @@
               :on-success="handleImgSuccess"
               :before-upload="beforeImgUpload"
             >
-              <img 
+              <img
                 v-if="trademarkParams.logoUrl"
                 :src="trademarkParams.logoUrl"
                 class="avatar"
@@ -79,7 +79,9 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogFormVisible = false">取消</el-button>
-          <el-button type="primary" @click="addOrUpdateTrademark">确定</el-button>
+          <el-button type="primary" @click="addOrUpdateTrademark">
+            确定
+          </el-button>
         </span>
       </template>
     </el-dialog>
@@ -151,19 +153,19 @@ const beforeImgUpload: UploadProps['beforeUpload'] = (rawFile) => {
 }
 // 上传品牌图片成功
 const handleImgSuccess: UploadProps['onSuccess'] = (response) => {
-console.log(response);
+  console.log(response)
 
   trademarkParams.logoUrl = response.data
 }
 // 添加/修改品牌请求
 const addOrUpdateTrademark = async () => {
-  let result: any =await reqAddOrUpdateTrademark(trademarkParams)
+  let result: any = await reqAddOrUpdateTrademark(trademarkParams)
   if (result.code == 200) {
     dialogFormVisible.value = false
     getHasTrademark()
-    ElMessage.success(trademarkParams.id?'修改品牌成功':'添加品牌成功')
+    ElMessage.success(trademarkParams.id ? '修改品牌成功' : '添加品牌成功')
   } else {
-    ElMessage.error(trademarkParams.id?'修改品牌失败':'添加品牌失败')
+    ElMessage.error(trademarkParams.id ? '修改品牌失败' : '添加品牌失败')
   }
 }
 // 点击添加按钮
@@ -171,10 +173,10 @@ const addTrademark = () => {
   dialogFormVisible.value = true
   trademarkParams.id = 0
   trademarkParams.tmName = ''
-  trademarkParams.logoUrl=''
+  trademarkParams.logoUrl = ''
 }
 // 点击修改按钮
-const updateTrademark = (row:Trademark) => {
+const updateTrademark = (row: Trademark) => {
   dialogFormVisible.value = true
   Object.assign(trademarkParams, row)
 }

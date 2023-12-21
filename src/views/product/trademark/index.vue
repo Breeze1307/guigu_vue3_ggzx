@@ -19,7 +19,7 @@
           <img :src="row.logoUrl" alt="" style="width: 100px; height: 100px" />
         </template>
       </el-table-column>
-      <el-table-column label="品牌操作" style="white-space: nowrap;">
+      <el-table-column label="品牌操作" style="white-space: nowrap">
         <template #="{ row }">
           <el-button
             sizes="small"

@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-04 17:29:39
- * @LastEditTime: 2023-12-18 17:04:26
+ * @LastEditTime: 2023-12-25 15:38:39
  * @LastEditors: breeze1307
  */
 import { defineStore } from 'pinia'
@@ -15,14 +15,14 @@ import type {
   userResponseData,
 } from '@/api/user/type'
 // state类型
-import type { useState } from '@/store/types/types'
+import type { UserState } from '@/store/types/types'
 // token函数
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 // 路由列表
 import { constantRoute } from '@/router/routes'
 // 创建用户小仓库
 let useUserStore = defineStore('User', {
-  state: (): useState => {
+  state: (): UserState => {
     return {
       token: GET_TOKEN(),
       menuRoutes: constantRoute,

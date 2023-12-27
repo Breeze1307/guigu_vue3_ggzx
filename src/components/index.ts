@@ -2,12 +2,13 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-01 15:28:07
- * @LastEditTime: 2023-12-12 14:42:57
+ * @LastEditTime: 2023-12-25 14:18:08
  * @LastEditors: breeze1307
  */
 
 // 引入项目中全部的全局组件
 import SvgIcon from './SvgIcon.vue'
+import Category from './Category.vue'
 import { App, Component } from 'vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
@@ -15,7 +16,7 @@ interface globalComponents {
   [key: string]: Component // 这是索引签名的语法，表示可以使用任意字符串键作为对象的键,值为Component类型或其子类型
 }
 
-const allGlobalComponent: globalComponents = { SvgIcon }
+const allGlobalComponent: globalComponents = { SvgIcon, Category }
 
 // 对外暴露插件对象
 export default {

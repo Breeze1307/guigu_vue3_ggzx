@@ -94,7 +94,7 @@
               size="small"
               @blur="toLook(row, $index)"
             ></el-input>
-            <div v-else @click="toEdit(row,$index)">{{ row.valueName }}</div>
+            <div v-else @click="toEdit(row, $index)">{{ row.valueName }}</div>
           </template>
         </el-table-column>
         <el-table-column label="属性值操作">
@@ -223,7 +223,7 @@ const toLook = (row: AttrValue, index: number) => {
   row.flag = false
 }
 // 属性值编辑模式
-const toEdit = (row: AttrValue,index:number) => {
+const toEdit = (row: AttrValue, index: number) => {
   row.flag = true
   //nextTick:响应式数据发生变化,获取更新的DOM(组件实例)
   nextTick(() => {

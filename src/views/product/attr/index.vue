@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2023-12-27 16:32:41
+ * @LastEditTime: 2023-12-27 16:57:54
  * @LastEditors: breeze1307
 -->
 <template>
@@ -122,7 +122,7 @@
 
 <script lang="ts" setup>
 import useCategoryStore from '@/store/modules/category'
-import { watch, ref, reactive, nextTick } from 'vue'
+import { watch, ref, reactive, nextTick, onBeforeUnmount } from 'vue'
 import type { Attr, AttrResponseData, AttrValue } from '@/api/product/attr/type'
 import {
   reqAttrInfoList,
@@ -244,6 +244,10 @@ const deleteAttr = async (attrId: number) => {
     ElMessage.error('删除失败')
   }
 }
+// 路由组件销毁的时候，把仓库分类相关的数据清空
+onBeforeUnmount(() => {
+  categoryStore.$reset()
+})
 </script>
 
 <style lang="scss" scoped>

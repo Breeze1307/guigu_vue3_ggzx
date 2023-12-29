@@ -8,7 +8,11 @@
 import request from '@/utils/request'
 import type { HasSpuResponseData } from './type'
 // spu已有数据
-export const reqSpuHas = (page: number, limit: number, category3Id: number | string) =>
+export const reqSpuHas = (
+  page: number,
+  limit: number,
+  category3Id: number | string,
+) =>
   request.get<any, HasSpuResponseData>(
     `/admin/product/${page}/${limit}?category3Id=${category3Id}`,
   )

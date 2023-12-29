@@ -1,7 +1,7 @@
-import exp from "constants"
+import exp from 'constants'
 
 /*
- * @Description: 
+ * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-28 10:25:34
  * @LastEditTime: 2023-12-28 15:15:27
@@ -16,8 +16,8 @@ export interface SpuData {
   id?: number
   spuName: string
   description: string
-  category3Id: number|string
-  tmId: number|string
+  category3Id: number | string
+  tmId: number | string
   spuSaleAttrList: null
   spuImageList: null
   spuPosterList: null

@@ -39,27 +39,33 @@
       <el-select placeholder="请选择">
         <el-option></el-option>
       </el-select>
-      <el-button icon="Plus" type="primary" style="margin-left:10px">添加属性</el-button>
+      <el-button icon="Plus" type="primary" style="margin-left: 10px">
+        添加属性
+      </el-button>
     </el-form-item>
     <el-form-item>
-        <el-table border>
-            <el-table-column label="序号" width="100px" align="center"></el-table-column>
-            <el-table-column label="销售属性名字" width="120px"></el-table-column>
-            <el-table-column label="销售属性值"></el-table-column>
-            <el-table-column label="操作" width="100px"></el-table-column>
-        </el-table>
+      <el-table border>
+        <el-table-column
+          label="序号"
+          width="100px"
+          align="center"
+        ></el-table-column>
+        <el-table-column label="销售属性名字" width="120px"></el-table-column>
+        <el-table-column label="销售属性值"></el-table-column>
+        <el-table-column label="操作" width="100px"></el-table-column>
+      </el-table>
     </el-form-item>
     <el-form-item>
-        <el-button type="primary">保存</el-button>
-        <el-button type="primary" @click="cancel">取消</el-button>
+      <el-button type="primary">保存</el-button>
+      <el-button type="primary" @click="cancel">取消</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script lang="ts" setup>
-let $emit=defineEmits(['changeScene'])
-const cancel = ()=>{
-    $emit('changeScene',0)
+let $emit = defineEmits(['changeScene'])
+const cancel = () => {
+  $emit('changeScene', 0)
 }
 </script>
 

@@ -76,8 +76,8 @@
         @current-change="getHasSpu"
       />
     </template>
-      <SpuForm v-else-if="scene==1" @changeScene="changeScene"></SpuForm>
-      <SkuForm v-else @changeScene="changeScene"></SkuForm>
+    <SpuForm v-else-if="scene == 1" @changeScene="changeScene"></SpuForm>
+    <SkuForm v-else @changeScene="changeScene"></SkuForm>
   </el-card>
 </template>
 
@@ -141,8 +141,7 @@ const changeScene = (value: number) => {
 // 添加sku
 const addSku = () => {
   scene.value = 2
-  console.log(scene.value);
-  
+  console.log(scene.value)
 }
 </script>
 <style lang="scss" scoped></style>

@@ -13,7 +13,7 @@
           placeholder="请选择"
           v-model="categoryStore.c1Id"
           @change="handleGetC2"
-          :disabled="scene==0?false:true"
+          :disabled="scene == 0 ? false : true"
         >
           <el-option
             v-for="c1 in categoryStore.c1Arr"
@@ -28,7 +28,7 @@
           placeholder="请选择"
           v-model="categoryStore.c2Id"
           @change="handleGetC3"
-          :disabled="scene==0?false:true"
+          :disabled="scene == 0 ? false : true"
         >
           <el-option
             v-for="c2 in categoryStore.c2Arr"
@@ -41,7 +41,7 @@
       <el-form-item label="三级分类">
         <el-select
           placeholder="请选择"
-          :disabled="scene==0?false:true"
+          :disabled="scene == 0 ? false : true"
           v-model="categoryStore.c3Id"
         >
           <el-option

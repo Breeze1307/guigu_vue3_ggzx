@@ -8,7 +8,7 @@
 <template>
   <Category :scene="scene"></Category>
   <el-card class="box-card">
-    <template v-if="scene==0">
+    <template v-if="scene == 0">
       <el-button
         type="primary"
         icon="Plus"
@@ -62,7 +62,7 @@
         </el-table-column>
       </el-table>
     </template>
-    <template v-if="scene==1">
+    <template v-if="scene == 1">
       <el-form :inline="true">
         <el-form-item label="属性名称">
           <el-input v-model="attrInfo.attrName" placeholder="请输入属性名称" />

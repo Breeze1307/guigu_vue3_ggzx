@@ -39,7 +39,11 @@
     </el-form-item>
     <el-form-item label="图片名称">
       <el-table border>
-        <el-table-column type="selection" align="center" width="80"></el-table-column>
+        <el-table-column
+          type="selection"
+          align="center"
+          width="80"
+        ></el-table-column>
         <el-table-column label="图片">
           <template #>
             <img src="" alt="" />

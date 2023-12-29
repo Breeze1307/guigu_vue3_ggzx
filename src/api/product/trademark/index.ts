@@ -1,8 +1,8 @@
 /*
- * @Description:
+ * @Description:品牌相关接口
  * @Author: breeze1307
  * @Date: 2023-12-19 09:55:03
- * @LastEditTime: 2023-12-20 20:02:07
+ * @LastEditTime: 2023-12-28 10:27:31
  * @LastEditors: breeze1307
  */
 import request from '@/utils/request'

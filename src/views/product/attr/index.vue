@@ -2,13 +2,13 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2023-12-27 16:57:54
+ * @LastEditTime: 2023-12-28 14:52:14
  * @LastEditors: breeze1307
 -->
 <template>
   <Category :scene="scene"></Category>
   <el-card class="box-card">
-    <template v-if="scene">
+    <template v-if="scene==0">
       <el-button
         type="primary"
         icon="Plus"
@@ -62,7 +62,7 @@
         </el-table-column>
       </el-table>
     </template>
-    <template v-if="!scene">
+    <template v-if="scene==1">
       <el-form :inline="true">
         <el-form-item label="属性名称">
           <el-input v-model="attrInfo.attrName" placeholder="请输入属性名称" />
@@ -133,7 +133,7 @@ import { ElMessage } from 'element-plus'
 let categoryStore = useCategoryStore()
 let attrArr = ref<Attr[]>([])
 // 定义card组件切换
-let scene = ref<boolean>(true)
+let scene = ref<number>(0)
 // 属性参数
 let attrInfo = reactive<Attr>({
   attrName: '',

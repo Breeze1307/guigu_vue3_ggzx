@@ -1,8 +1,8 @@
 /*
- * @Description:
+ * @Description:attr（属性）相关接口
  * @Author: breeze1307
  * @Date: 2023-12-21 17:23:06
- * @LastEditTime: 2023-12-27 16:17:29
+ * @LastEditTime: 2023-12-28 10:26:46
  * @LastEditors: breeze1307
  */
 import request from '@/utils/request'

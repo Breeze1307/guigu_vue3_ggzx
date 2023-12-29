@@ -4,7 +4,7 @@ import exp from 'constants'
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-28 10:25:34
- * @LastEditTime: 2023-12-28 15:15:27
+ * @LastEditTime: 2023-12-29 10:26:46
  * @LastEditors: breeze1307
  */
 export interface ResponseData {
@@ -31,4 +31,19 @@ export interface HasSpuResponseData extends ResponseData {
     searchCount: boolean
     pages: number
   }
+}
+export interface Trademark {
+  id: number
+  tmName: string
+  logoUrl: string
+}
+export interface TrademarkData extends ResponseData {
+  data: Trademark[]
+}
+export interface SaleAttr {
+  id: number
+  name: string
+}
+export interface SaleAttrData extends ResponseData {
+  data: SaleAttr[]
 }

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2023-12-29 10:00:19
+ * @LastEditTime: 2024-01-03 09:46:01
  * @LastEditors: breeze1307
 -->
 <template>
@@ -31,7 +31,7 @@
           show-overflow-tooltip
         ></el-table-column>
         <el-table-column label="SPU操作">
-          <template #>
+          <template #="{ row }">
             <el-button
               icon="Plus"
               size="small"
@@ -44,7 +44,7 @@
               size="small"
               type="primary"
               title="编辑SPU"
-              @click="editSpu"
+              @click="editSpu(row)"
             ></el-button>
             <el-button
               icon="View"
@@ -76,13 +76,17 @@
         @current-change="getHasSpu"
       />
     </template>
-    <SpuForm v-else-if="scene == 1" @changeScene="changeScene"></SpuForm>
-    <SkuForm v-else @changeScene="changeScene"></SkuForm>
+    <SpuForm
+      v-else-if="scene == 1"
+      ref="spu"
+      @changeScene="changeScene"
+    ></SpuForm>
+    <SkuForm v-else ref="sku" @changeScene="changeScene"></SkuForm>
   </el-card>
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, watch, nextTick } from 'vue'
 import { reqSpuHas } from '@/api/product/spu'
 import { HasSpuResponseData, SpuData } from '@/api/product/spu/type'
 import SpuForm from './spuForm.vue'
@@ -90,7 +94,7 @@ import SkuForm from './skuForm.vue'
 import useCategoryStore from '@/store/modules/category'
 let categoryStore = useCategoryStore()
 // 控制卡片列表切换和分类列表是否禁用 0：spu已有数据 1：spu添加/修改 2：添加sku
-let scene = ref<number>(2)
+let scene = ref<number>(0)
 // 每页条数
 let limit = ref<number>(3)
 // 当前页数
@@ -99,6 +103,10 @@ let pageNo = ref<number>(1)
 let total = ref<number>(0)
 // spu已有数据
 let records = ref<SpuData[]>([])
+// spu组件实例
+let spu = ref<any>()
+// sku组件实例
+let sku = ref<any>()
 // 每页条数切换获取数据
 const handleSizeChange = () => {
   getHasSpu()
@@ -131,8 +139,11 @@ const addSpu = () => {
   scene.value = 1
 }
 // 编辑SPU
-const editSpu = () => {
+const editSpu = (row: SpuData) => {
   scene.value = 1
+  nextTick(() => {
+    spu.value.initHasSpuData(row)
+  })
 }
 // 切换展示的卡片
 const changeScene = (value: number) => {

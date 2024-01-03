@@ -4,7 +4,7 @@ import exp from 'constants'
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-28 10:25:34
- * @LastEditTime: 2023-12-29 10:26:46
+ * @LastEditTime: 2024-01-03 10:32:12
  * @LastEditors: breeze1307
  */
 export interface ResponseData {
@@ -18,9 +18,8 @@ export interface SpuData {
   description: string
   category3Id: number | string
   tmId: number | string
-  spuSaleAttrList: null
-  spuImageList: null
-  spuPosterList: null
+  spuSaleAttrList: null | SpuSaleAttr[]
+  spuImageList: SpuImage[]
 }
 export interface HasSpuResponseData extends ResponseData {
   data: {
@@ -46,4 +45,33 @@ export interface SaleAttr {
 }
 export interface SaleAttrData extends ResponseData {
   data: SaleAttr[]
+}
+export interface SpuImage {
+  id?: number
+  spuId?: number
+  imgName?: string
+  imgUrl?: string
+  name?: string
+  url?: string
+}
+export interface SpuImageData extends ResponseData {
+  data: SpuImage[]
+}
+export interface SpuSaleAttrValue {
+  id?: number
+  spuId?: number
+  baseSaleAttrId: number
+  saleAttrValueName: string
+  saleAttrName?: string
+  isChecked?: boolean
+}
+export interface SpuSaleAttr {
+  id?: number
+  spuId?: number
+  baseSaleAttrId: number
+  saleAttrName: string
+  spuSaleAttrValueList: SpuSaleAttrValue[]
+}
+export interface SpuSaleAttrData extends ResponseData {
+  data: SpuSaleAttr[]
 }

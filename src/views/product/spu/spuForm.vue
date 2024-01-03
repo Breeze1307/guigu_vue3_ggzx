@@ -45,7 +45,12 @@
         </el-upload>
 
         <el-dialog v-model="dialogVisible">
-          <img w-full :src="dialogImageUrl" alt="Preview Image" style="width: 100%; height: 100%;"/>
+          <img
+            w-full
+            :src="dialogImageUrl"
+            alt="Preview Image"
+            style="width: 100%; height: 100%"
+          />
         </el-dialog>
       </template>
     </el-form-item>

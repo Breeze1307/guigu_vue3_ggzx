@@ -60,7 +60,7 @@ export interface SpuImageData extends ResponseData {
 export interface SpuSaleAttrValue {
   id?: number
   spuId?: number
-  baseSaleAttrId: number|string
+  baseSaleAttrId: number | string
   saleAttrValueName: string
   saleAttrName?: string
   isChecked?: boolean
@@ -71,7 +71,7 @@ export interface SpuSaleAttr {
   baseSaleAttrId: number | string
   saleAttrName: string
   flag?: boolean
-  saleAttrValue?:string
+  saleAttrValue?: string
   spuSaleAttrValueList: SpuSaleAttrValue[]
 }
 export interface SpuSaleAttrData extends ResponseData {

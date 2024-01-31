@@ -300,7 +300,7 @@ const saveInfo = async () => {
 }
 // 初始化新增数据
 const initAddSpu = async (c3Id: number | string) => {
-  spuParams.value.category3Id=c3Id
+  spuParams.value.category3Id = c3Id
   // 品牌
   let result: TrademarkData = await reqTrademarkList()
   // 所有销售属性

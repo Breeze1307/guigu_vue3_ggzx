@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2023-12-28 14:52:14
+ * @LastEditTime: 2024-01-06 20:11:38
  * @LastEditors: breeze1307
 -->
 <template>
@@ -76,7 +76,7 @@
       >
         添加属性值
       </el-button>
-      <el-button type="primary" @click="scene = true">取消</el-button>
+      <el-button type="primary" @click="scene = 0">取消</el-button>
       <el-table border style="margin: 10px 0" :data="attrInfo.attrValueList">
         <el-table-column
           type="index"
@@ -115,7 +115,7 @@
       >
         保存
       </el-button>
-      <el-button type="primary" @click="scene = true">取消</el-button>
+      <el-button type="primary" @click="scene = 0">取消</el-button>
     </template>
   </el-card>
 </template>
@@ -170,11 +170,11 @@ const addAttr = () => {
     categoryId: '',
     categoryLevel: 3,
   })
-  scene.value = false
+  scene.value = 1
 }
 // 修改属性
 const updateAttr = (row: Attr) => {
-  scene.value = false
+  scene.value = 1
   Object.assign(attrInfo, JSON.parse(JSON.stringify(row)))
 }
 // 添加属性值
@@ -198,7 +198,7 @@ const saveAttrInfo = async () => {
   } else {
     ElMessage.success(attrInfo.id ? '修改失败' : '添加失败')
   }
-  scene.value = true
+  scene.value = 0
 }
 // 属性值查看模式
 const toLook = (row: AttrValue, index: number) => {

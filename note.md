@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 17:10:35
- * @LastEditTime: 2023-12-05 17:14:34
+ * @LastEditTime: 2024-01-17 11:27:34
  * @LastEditors: breeze1307
 -->
 #### **1.husky提交报错**
@@ -105,6 +105,9 @@ export default {
 (4)  
 ![20231205171233](https://raw.githubusercontent.com/Breeze1307/img/main/20231205171233.png)   
 解决方案：使用类型断言`as`,在此案例中如`(result.data.token) as string`  
+
+思考：  
+vue3表格数据中本身没有的属性，通过row可以添加，并直接更新dom在模板上展示，而vue2能添加，但是不会更新dom，不知道是不是ts类型定义的原因  
 
 
 

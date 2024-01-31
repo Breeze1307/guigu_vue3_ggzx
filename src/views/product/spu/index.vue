@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2024-01-03 09:46:01
+ * @LastEditTime: 2024-01-30 14:21:26
  * @LastEditors: breeze1307
 -->
 <template>
@@ -137,6 +137,9 @@ const getHasSpu = async (page = 1) => {
 // 添加SPU
 const addSpu = () => {
   scene.value = 1
+  nextTick(() => {
+    spu.value.initAddSpu(categoryStore.c3Id)
+  })
 }
 // 编辑SPU
 const editSpu = (row: SpuData) => {
@@ -146,13 +149,19 @@ const editSpu = (row: SpuData) => {
   })
 }
 // 切换展示的卡片
-const changeScene = (value: number) => {
-  scene.value = value
+const changeScene = (data: any) => {
+  scene.value = data.flag
+  if (data.params == 'update') {
+    // 更新留在当前页
+    getHasSpu(pageNo.value)
+  } else if (data.params == 'add') {
+    // 添加回到第一页
+    getHasSpu()
+  }
 }
 // 添加sku
 const addSku = () => {
   scene.value = 2
-  console.log(scene.value)
 }
 </script>
 <style lang="scss" scoped></style>

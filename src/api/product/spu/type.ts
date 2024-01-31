@@ -4,7 +4,7 @@ import exp from 'constants'
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-28 10:25:34
- * @LastEditTime: 2024-01-03 10:32:12
+ * @LastEditTime: 2024-01-06 20:43:30
  * @LastEditors: breeze1307
  */
 export interface ResponseData {
@@ -60,7 +60,7 @@ export interface SpuImageData extends ResponseData {
 export interface SpuSaleAttrValue {
   id?: number
   spuId?: number
-  baseSaleAttrId: number
+  baseSaleAttrId: number|string
   saleAttrValueName: string
   saleAttrName?: string
   isChecked?: boolean
@@ -68,8 +68,10 @@ export interface SpuSaleAttrValue {
 export interface SpuSaleAttr {
   id?: number
   spuId?: number
-  baseSaleAttrId: number
+  baseSaleAttrId: number | string
   saleAttrName: string
+  flag?: boolean
+  saleAttrValue?:string
   spuSaleAttrValueList: SpuSaleAttrValue[]
 }
 export interface SpuSaleAttrData extends ResponseData {

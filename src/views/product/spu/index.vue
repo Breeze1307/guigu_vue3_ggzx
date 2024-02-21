@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2024-01-30 14:21:26
+ * @LastEditTime: 2024-02-20 16:15:45
  * @LastEditors: breeze1307
 -->
 <template>
@@ -37,7 +37,7 @@
               size="small"
               type="primary"
               title="添加SKU"
-              @click="addSku"
+              @click="addSku(row)"
             ></el-button>
             <el-button
               icon="Edit"
@@ -160,8 +160,11 @@ const changeScene = (data: any) => {
   }
 }
 // 添加sku
-const addSku = () => {
+const addSku = (spuId:number) => {
   scene.value = 2
+  nextTick(() => {
+    sku.value.initSkuData(categoryStore.c1Id,categoryStore.c2Id,categoryStore.c3Id,spuId)
+  })
 }
 </script>
 <style lang="scss" scoped></style>

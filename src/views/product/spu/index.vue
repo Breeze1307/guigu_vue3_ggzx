@@ -160,10 +160,15 @@ const changeScene = (data: any) => {
   }
 }
 // 添加sku
-const addSku = (spuId:number) => {
+const addSku = (spuId: number) => {
   scene.value = 2
   nextTick(() => {
-    sku.value.initSkuData(categoryStore.c1Id,categoryStore.c2Id,categoryStore.c3Id,spuId)
+    sku.value.initSkuData(
+      categoryStore.c1Id,
+      categoryStore.c2Id,
+      categoryStore.c3Id,
+      spuId,
+    )
   })
 }
 </script>

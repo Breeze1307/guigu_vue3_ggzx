@@ -8,7 +8,10 @@
 <template>
   <el-form label-width="70">
     <el-form-item label="SKU名称">
-      <el-input palceholdoer="请输入SKU名称" v-model="skuParams.skuName"></el-input>
+      <el-input
+        palceholdoer="请输入SKU名称"
+        v-model="skuParams.skuName"
+      ></el-input>
     </el-form-item>
     <el-form-item label="价格(元)">
       <el-input palceholdoer="请输入价格" v-model="skuParams.price"></el-input>
@@ -17,7 +20,11 @@
       <el-input palceholdoer="请输入重量" v-model="skuParams.weight"></el-input>
     </el-form-item>
     <el-form-item label="SKU描述">
-      <el-input type="textarea" palceholdoer="请输入SKU描述" v-model="skuParams.skuDesc"></el-input>
+      <el-input
+        type="textarea"
+        palceholdoer="请输入SKU描述"
+        v-model="skuParams.skuDesc"
+      ></el-input>
     </el-form-item>
     <el-form-item label="平台属性">
       <el-form :inline="true">
@@ -70,8 +77,10 @@
         </el-table-column>
         <el-table-column label="名称" prop="imgName"></el-table-column>
         <el-table-column label="操作">
-          <template #="{row}">
-            <el-button type="primary" size="small" @click="setImage(row)">设置默认</el-button>
+          <template #="{ row }">
+            <el-button type="primary" size="small" @click="setImage(row)">
+              设置默认
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -84,9 +93,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref,reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import { reqAttrInfoList } from '@/api/product/attr'
-import { reqSpuImageList, reqSpuSaleAttrList,reqAddSku } from '@/api/product/spu'
+import {
+  reqSpuImageList,
+  reqSpuSaleAttrList,
+  reqAddSku,
+} from '@/api/product/spu'
 import type { AttrResponseData } from '@/api/product/attr/type'
 import type {
   SpuImageData,
@@ -98,21 +111,21 @@ let $emit = defineEmits(['changeScene'])
 let platFormAttr = ref<any>()
 let saleAttr = ref<any>()
 let spuImg = ref<any>()
-let table=ref<any>()
+let table = ref<any>()
 let skuParams = reactive<SkuData>({
-  category3Id: "", // 三级分类id
-  spuId: "", // 已有spu id
-  tmId: "", // 品牌id
-  skuName: "", // sku名称
-  price: "", // sku价格
-  weight: "", // sku重量
-  skuDesc: "", // sku描述
-  skuDefaultImg: "", // sku默认图片地址
+  category3Id: '', // 三级分类id
+  spuId: '', // 已有spu id
+  tmId: '', // 品牌id
+  skuName: '', // sku名称
+  price: '', // sku价格
+  weight: '', // sku重量
+  skuDesc: '', // sku描述
+  skuDefaultImg: '', // sku默认图片地址
   skuAttrValueList: [], // sku平台属性
-  skuSaleAttrValueList: [] // sku销售属性
+  skuSaleAttrValueList: [], // sku销售属性
 })
 const cancel = () => {
-  $emit('changeScene', { flag: 0})
+  $emit('changeScene', { flag: 0 })
 }
 // 初始化展示
 const initSkuData = async (
@@ -123,7 +136,7 @@ const initSkuData = async (
 ) => {
   skuParams.category3Id = c3Id
   skuParams.spuId = spu.id
-  skuParams.tmId= spu.tmId
+  skuParams.tmId = spu.tmId
   let result: AttrResponseData = await reqAttrInfoList(c1Id, c2Id, c3Id)
   platFormAttr.value = result.data
   let result1: SpuSaleAttrData = await reqSpuSaleAttrList(spu.id)
@@ -136,36 +149,39 @@ const setImage = (row: any) => {
   // 清除之前的选择
   table.value.clearSelection()
   // 设置默认图片
-  table.value.toggleRowSelection(row,true)
+  table.value.toggleRowSelection(row, true)
   // 收集图片地址
-  skuParams.skuDefaultImg=row.imgUrl
+  skuParams.skuDefaultImg = row.imgUrl
 }
 // 禁止使用多选框勾选
 const selectable = () => {
   return false
 }
 // 提交sku参数，添加sku数据
-const submitSku =async () => {
+const submitSku = async () => {
   // 平台属性
-  platFormAttr.value.forEach((attr:any)=> {
+  platFormAttr.value.forEach((attr: any) => {
     if (attr.attrIdAndValueId) {
       let [attrId, valueId] = attr.attrIdAndValueId.split(':')
-      skuParams.skuAttrValueList.push({attrId, valueId})
+      skuParams.skuAttrValueList.push({ attrId, valueId })
     }
-  });
+  })
   // 销售属性
   // 练习reduce,传递[]为初始值，next即可从数组第一个数据遍历
-  skuParams.skuSaleAttrValueList = saleAttr.value.reduce((prev: any, next: any) => {
-    if(next.saleIdAndvalueId) {
-      let [saleAttrId, saleAttrValueId] = next.saleIdAndvalueId.split(':')
-      prev.push({saleAttrId, saleAttrValueId})
-    }
-    return prev
-  },[])
+  skuParams.skuSaleAttrValueList = saleAttr.value.reduce(
+    (prev: any, next: any) => {
+      if (next.saleIdAndvalueId) {
+        let [saleAttrId, saleAttrValueId] = next.saleIdAndvalueId.split(':')
+        prev.push({ saleAttrId, saleAttrValueId })
+      }
+      return prev
+    },
+    [],
+  )
   let result = await reqAddSku(skuParams)
   if (result.code == 200) {
     ElMessage.success('添加SKU成功')
-    $emit('changeScene',{flag:0,params:'add'})
+    $emit('changeScene', { flag: 0, params: 'add' })
   } else {
     ElMessage.error('添加SKU失败')
   }

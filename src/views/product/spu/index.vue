@@ -53,7 +53,10 @@
               title="查看SKU列表"
               @click="viewSku(row.id)"
             ></el-button>
-            <el-popconfirm :title="`确定删除${row.spuName}吗?`" @confirm="deleteSpuData(row.id)">
+            <el-popconfirm
+              :title="`确定删除${row.spuName}吗?`"
+              @confirm="deleteSpuData(row.id)"
+            >
               <template #reference>
                 <el-button
                   icon="Delete"
@@ -215,7 +218,7 @@ const deleteSpuData = async (spuId: number | string) => {
   if (result.code == 200) {
     ElMessage.success('删除成功')
     // 重新获取数据，似乎这样判断处理是不需要的
-    getHasSpu(records.value.length>1?pageNo.value:pageNo.value-1)
+    getHasSpu(records.value.length > 1 ? pageNo.value : pageNo.value - 1)
   } else {
     ElMessage.success('删除失败')
   }

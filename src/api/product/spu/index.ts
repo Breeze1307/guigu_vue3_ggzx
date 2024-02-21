@@ -55,4 +55,4 @@ export const reqSkuData = (skuId: string | number) =>
   request.get<any, SkuInfoData>(`/admin/product/findBySpuId//${skuId}`)
 // 删除spu数据
 export const deleteSpu = (spuId) =>
-  request.delete<any,any>(`/admin/product/deleteSpu/${spuId}`)
+  request.delete<any, any>(`/admin/product/deleteSpu/${spuId}`)

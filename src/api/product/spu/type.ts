@@ -4,7 +4,7 @@ import exp from 'constants'
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-12-28 10:25:34
- * @LastEditTime: 2024-02-20 16:07:10
+ * @LastEditTime: 2024-02-21 11:41:04
  * @LastEditors: breeze1307
  */
 export interface ResponseData {
@@ -97,4 +97,7 @@ export interface SkuData {
   skuDefaultImg: string
   skuAttrValueList: Attr[]
   skuSaleAttrValueList: SaleAttr[]
+}
+export interface SkuInfoData extends ResponseData {
+  data: SkuData[]
 }

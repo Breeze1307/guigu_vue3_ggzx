@@ -2,7 +2,7 @@
  * @Description: SPU相关接口
  * @Author: breeze1307
  * @Date: 2023-12-28 10:25:27
- * @LastEditTime: 2024-02-20 16:07:44
+ * @LastEditTime: 2024-02-21 11:41:21
  * @LastEditors: breeze1307
  */
 import request from '@/utils/request'
@@ -14,6 +14,7 @@ import type {
   SpuImageData,
   SpuData,
   SkuData,
+  SkuInfoData
 } from './type'
 // spu已有数据
 export const reqSpuHas = (
@@ -49,3 +50,6 @@ export const reqAddOrUpdateSpu = (data: SpuData) => {
 // 添加sku数据
 export const reqAddSku = (data: SkuData) =>
   request.post<any, any>('/admin/product/saveSkuInfo', data)
+// sku数据展示
+export const reqSkuData = (skuId:string|number) => 
+  request.get<any,SkuInfoData>(`/admin/product/findBySpuId//${skuId}`)

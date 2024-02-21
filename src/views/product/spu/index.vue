@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2024-02-20 16:15:45
+ * @LastEditTime: 2024-02-21 11:42:15
  * @LastEditors: breeze1307
 -->
 <template>
@@ -51,6 +51,7 @@
               size="small"
               type="primary"
               title="查看SKU列表"
+              @click="viewSku(row.id)"
             ></el-button>
             <el-popconfirm title="确定删除?">
               <template #reference>
@@ -82,16 +83,36 @@
       @changeScene="changeScene"
     ></SpuForm>
     <SkuForm v-else ref="sku" @changeScene="changeScene"></SkuForm>
+    <!-- 展示已有sku数据 -->
+    <el-dialog
+    v-model="skuDialogVisible"
+    title="SKU列表"
+    width="50%"
+  >
+    <template #>
+      <el-table :data="skuDataList" style="width: 100%">
+        <el-table-column prop="skuName" label="SKU名字" />
+        <el-table-column prop="price" label="SKU价格" />
+        <el-table-column prop="weight" label="SKU重量" />
+        <el-table-column prop="address" label="SKU图片">
+          <template #="{row}">
+            <img :src="row.skuDefaultImg" style="width: 100px;height: 100px;"/>
+          </template>
+        </el-table-column>
+      </el-table>
+    </template>
+  </el-dialog>
   </el-card>
 </template>
 
 <script lang="ts" setup>
 import { ref, watch, nextTick } from 'vue'
-import { reqSpuHas } from '@/api/product/spu'
-import { HasSpuResponseData, SpuData } from '@/api/product/spu/type'
+import { reqSpuHas,reqSkuData } from '@/api/product/spu'
+import { HasSpuResponseData, SpuData,SkuInfoData } from '@/api/product/spu/type'
 import SpuForm from './spuForm.vue'
 import SkuForm from './skuForm.vue'
 import useCategoryStore from '@/store/modules/category'
+import { ElMessage } from 'element-plus'
 let categoryStore = useCategoryStore()
 // 控制卡片列表切换和分类列表是否禁用 0：spu已有数据 1：spu添加/修改 2：添加sku
 let scene = ref<number>(0)
@@ -107,6 +128,10 @@ let records = ref<SpuData[]>([])
 let spu = ref<any>()
 // sku组件实例
 let sku = ref<any>()
+// sku数据面板展示控制
+let skuDialogVisible = ref<boolean>(false)
+// sku数据
+let skuDataList=ref<any>()
 // 每页条数切换获取数据
 const handleSizeChange = () => {
   getHasSpu()
@@ -170,6 +195,16 @@ const addSku = (spuId: number) => {
       spuId,
     )
   })
+}
+// 查看sku
+const viewSku =async (spuId:string|number) => {
+  let result: SkuInfoData = await reqSkuData(spuId)
+  if (result.code == 200) {
+    skuDataList.value=result.data
+    skuDialogVisible.value=true                     
+  } else {
+    ElMessage.error("SKU数据获取失败")
+  }
 }
 </script>
 <style lang="scss" scoped></style>

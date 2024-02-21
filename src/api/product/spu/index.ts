@@ -14,7 +14,7 @@ import type {
   SpuImageData,
   SpuData,
   SkuData,
-  SkuInfoData
+  SkuInfoData,
 } from './type'
 // spu已有数据
 export const reqSpuHas = (
@@ -51,5 +51,5 @@ export const reqAddOrUpdateSpu = (data: SpuData) => {
 export const reqAddSku = (data: SkuData) =>
   request.post<any, any>('/admin/product/saveSkuInfo', data)
 // sku数据展示
-export const reqSkuData = (skuId:string|number) => 
-  request.get<any,SkuInfoData>(`/admin/product/findBySpuId//${skuId}`)
+export const reqSkuData = (skuId: string | number) =>
+  request.get<any, SkuInfoData>(`/admin/product/findBySpuId//${skuId}`)

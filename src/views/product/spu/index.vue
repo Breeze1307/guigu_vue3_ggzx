@@ -203,7 +203,7 @@ const addSku = (spuId: number) => {
   })
 }
 // 查看sku
-const viewSku = async (spuId: string | number) => {
+const viewSku = async (spuId: number) => {
   let result: SkuInfoData = await reqSkuData(spuId)
   if (result.code == 200) {
     skuDataList.value = result.data
@@ -213,7 +213,7 @@ const viewSku = async (spuId: string | number) => {
   }
 }
 // 删除spu数据
-const deleteSpuData = async (spuId: number | string) => {
+const deleteSpuData = async (spuId: number) => {
   let result: any = await deleteSpu(spuId)
   if (result.code == 200) {
     ElMessage.success('删除成功')

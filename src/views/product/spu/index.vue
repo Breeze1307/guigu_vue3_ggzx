@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:53:59
- * @LastEditTime: 2024-02-21 11:42:15
+ * @LastEditTime: 2024-02-21 14:29:34
  * @LastEditors: breeze1307
 -->
 <template>
@@ -53,7 +53,7 @@
               title="查看SKU列表"
               @click="viewSku(row.id)"
             ></el-button>
-            <el-popconfirm title="确定删除?">
+            <el-popconfirm :title="`确定删除${row.spuName}吗?`" @confirm="deleteSpuData(row.id)">
               <template #reference>
                 <el-button
                   icon="Delete"
@@ -106,7 +106,7 @@
 
 <script lang="ts" setup>
 import { ref, watch, nextTick } from 'vue'
-import { reqSpuHas, reqSkuData } from '@/api/product/spu'
+import { reqSpuHas, reqSkuData, deleteSpu } from '@/api/product/spu'
 import {
   HasSpuResponseData,
   SpuData,
@@ -207,6 +207,17 @@ const viewSku = async (spuId: string | number) => {
     skuDialogVisible.value = true
   } else {
     ElMessage.error('SKU数据获取失败')
+  }
+}
+// 删除spu数据
+const deleteSpuData = async (spuId: number | string) => {
+  let result: any = await deleteSpu(spuId)
+  if (result.code == 200) {
+    ElMessage.success('删除成功')
+    // 重新获取数据，似乎这样判断处理是不需要的
+    getHasSpu(records.value.length>1?pageNo.value:pageNo.value-1)
+  } else {
+    ElMessage.success('删除失败')
   }
 }
 </script>

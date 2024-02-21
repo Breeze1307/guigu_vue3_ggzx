@@ -7,7 +7,7 @@
 -->
 <template>
   <el-card>
-    <el-table :data="skuDataList" style="width: 100%;margin:10px 0" border>
+    <el-table :data="skuDataList" style="width: 100%; margin: 10px 0" border>
       <el-table-column type="index" label="序号" width="180" />
       <el-table-column prop="skuName" label="名称" />
       <el-table-column prop="skuDesc" label="描述" />

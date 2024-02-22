@@ -34,7 +34,9 @@
       <el-table-column prop="address" label="更新时间" />
       <el-table-column label="操作">
         <template #="{ row }">
-          <el-button type="primary" icon="User" size="small">分配角色</el-button>
+          <el-button type="primary" icon="User" size="small">
+            分配角色
+          </el-button>
           <el-button type="primary" icon="Edit" size="small">编辑</el-button>
           <el-button type="primary" icon="Delete" size="small">删除</el-button>
         </template>
@@ -52,15 +54,11 @@ let searchName = ref<string>('')
 // 搜索
 const search = () => {}
 // 重置
-const reset = () => { }
+const reset = () => {}
 // 添加用户
-const addUser = () => {
-  
-}
-// 删除用户 
-const deleteUser = () => {
-  
-}
+const addUser = () => {}
+// 删除用户
+const deleteUser = () => {}
 </script>
 
 <style lang="scss" scoped></style>

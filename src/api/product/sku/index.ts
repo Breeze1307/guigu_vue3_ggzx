@@ -6,7 +6,7 @@
  * @LastEditors: breeze1307
  */
 import request from '@/utils/request'
-import { SkuInfoData,SkuDetail } from './type'
+import { SkuInfoData, SkuDetail } from './type'
 // 获取sku列表
 export const reqSkuDataList = (page: number, limit: number) =>
   request.get<any, SkuInfoData>(`/admin/product/list/${page}/${limit}`)
@@ -14,14 +14,14 @@ export const reqSkuDataList = (page: number, limit: number) =>
 export const reqUpdateSale = (skuId: number, isSale: boolean) => {
   // isSale为真，请求下架接口
   if (isSale) {
-    return request.get<any,any>(`/admin/product/cancelSale/${skuId}`)
+    return request.get<any, any>(`/admin/product/cancelSale/${skuId}`)
   } else {
-    return request.get<any,any>(`/admin/product/onSale/${skuId}`)
+    return request.get<any, any>(`/admin/product/onSale/${skuId}`)
   }
 }
 // 获取sku详细信息
-export const reqSkuInfo=(skuId:number) =>
+export const reqSkuInfo = (skuId: number) =>
   request.get<any, SkuDetail>(`/admin/product/getSkuInfo/${skuId}`)
 // 删除sku
-export const reqRemoveSku = (skuId: number) => 
-  request.delete<any,any>(`/admin/product/deleteSku/${skuId}`)
+export const reqRemoveSku = (skuId: number) =>
+  request.delete<any, any>(`/admin/product/deleteSku/${skuId}`)

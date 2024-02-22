@@ -45,6 +45,6 @@ export interface SkuInfoData extends ResponseData {
     records: SkuData[]
   }
 }
-export interface SkuDetail extends ResponseData{
+export interface SkuDetail extends ResponseData {
   data: SkuData
 }

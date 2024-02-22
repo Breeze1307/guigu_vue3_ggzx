@@ -38,13 +38,12 @@
             icon="InfoFilled"
             @click="getSkuInfo(row.id)"
           ></el-button>
-          <el-popconfirm :title="`确定删除${row.skuName}吗?`" @confirm="deleteSku(row.id, $index)">
+          <el-popconfirm
+            :title="`确定删除${row.skuName}吗?`"
+            @confirm="deleteSku(row.id, $index)"
+          >
             <template #reference>
-              <el-button
-                type="primary"
-                size="small"
-                icon="Delete"
-              ></el-button>
+              <el-button type="primary" size="small" icon="Delete"></el-button>
             </template>
           </el-popconfirm>
         </template>

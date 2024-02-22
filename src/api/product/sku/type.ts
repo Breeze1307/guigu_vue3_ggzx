@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2024-02-21 19:43:08
- * @LastEditTime: 2024-02-21 19:56:07
+ * @LastEditTime: 2024-02-22 15:35:34
  * @LastEditors: breeze1307
  */
 interface ResponseData {
@@ -44,4 +44,7 @@ export interface SkuInfoData extends ResponseData {
     pages: number
     records: SkuData[]
   }
+}
+export interface SkuDetail extends ResponseData{
+  data: SkuData
 }

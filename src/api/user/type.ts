@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-30 09:27:09
- * @LastEditTime: 2023-12-18 16:47:22
+ * @LastEditTime: 2024-02-23 17:46:31
  * @LastEditors: breeze1307
  */
 // 登录接口需要携带参数ts类型
@@ -28,5 +28,40 @@ export interface userResponseData extends ResponseData {
     roles: string[]
     name: string
     avatar: string
+  }
+}
+// 用户信息数据类型定义
+export interface UserInfo {
+  id?: number
+  username: string
+  password: string
+  name: string
+  phone?: null
+  roleName?: string
+}
+export interface UserInfoList extends ResponseData {
+  data: {
+    records: UserInfo[]
+    total: number
+    size: number
+    current: number
+    orders: []
+    optimizeCountSql: boolean
+    hitCount: boolean
+    countId: null
+    maxLimit: null
+    searchCount: boolean
+    pages: number
+  }
+}
+export interface RoleInfo {
+  id: number
+  roleName: string
+  remark: null
+}
+export interface AllRoleInfo extends ResponseData {
+  data: {
+    assignRoles: RoleInfo[]
+    allRolesList: RoleInfo[]
   }
 }

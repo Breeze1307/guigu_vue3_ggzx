@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:30:37
- * @LastEditTime: 2024-02-23 17:48:51
- * @LastEditors: breeze1307
+ * @LastEditTime: 2024-02-26 22:06:55
+ * @LastEditors: Breeze1307
 -->
 <template>
   <el-card>
@@ -44,7 +44,7 @@
             type="primary"
             icon="User"
             size="small"
-            @click="assignRole"
+            @click="assignRole(row.id)"
           >
             分配角色
           </el-button>
@@ -111,7 +111,12 @@
 <script lang="ts" setup>
 import { ref, reactive, onMounted, nextTick } from 'vue'
 import { reqUserList, reqUserAddOrUpdate, reqUserRole } from '@/api/user'
-import type { UserInfoList, UserInfo, AllRoleInfo } from '@/api/user/type'
+import type {
+  UserInfoList,
+  UserInfo,
+  AllRoleInfo,
+  RoleInfo,
+} from '@/api/user/type'
 import { ElMessage } from 'element-plus'
 // 用户数据列表
 let userInfo = ref<any>([])
@@ -135,6 +140,11 @@ let userParams = reactive<UserInfo>({
 let userRef = ref<any>()
 // 分配职位抽屉控制
 let roleDrawer = ref<boolean>(false)
+// 所有角色数据
+let allRoleList = ref<RoleInfo[]>([])
+// 已分配角色
+let assignRoles = ref<RoleInfo[]>([])
+
 // 用户验证信息
 const userRules = {
   username: [
@@ -224,7 +234,16 @@ const clearUser = () => {
   })
 }
 // 分配角色
-const assignRole = () => {}
+const assignRole = async (adminId: number) => {
+  let result: AllRoleInfo = await reqUserRole(adminId)
+  if (result.code == 200) {
+    roleDrawer.value = true
+    allRoleList.value = result.data.allRolesList
+    assignRoles.value = result.data.assignRoles
+  } else {
+    ElMessage.error('角色数据出错')
+  }
+}
 // 删除用户
 const deleteUser = () => {}
 </script>

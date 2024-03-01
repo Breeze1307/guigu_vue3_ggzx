@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-30 09:27:09
- * @LastEditTime: 2024-02-23 17:46:31
+ * @LastEditTime: 2024-02-27 20:16:58
  * @LastEditors: breeze1307
  */
 // 登录接口需要携带参数ts类型
@@ -64,4 +64,8 @@ export interface AllRoleInfo extends ResponseData {
     assignRoles: RoleInfo[]
     allRolesList: RoleInfo[]
   }
+}
+export interface assignRoleData {
+  roleIdList: number[]
+  userId: number
 }

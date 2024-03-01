@@ -13,7 +13,7 @@ import type {
   UserInfoList,
   UserInfo,
   AllRoleInfo,
-  assignRoleData
+  assignRoleData,
 } from '@/api/user/type'
 // 登录接口
 export const login = (data: loginForm) =>
@@ -44,8 +44,8 @@ export const reqUserRole = (userId: number) =>
 export const reqAssignRole = (data: assignRoleData) =>
   request.post<any, any>('/admin/acl/user/doAssignRole', data)
 // 单个用户删除
-export const reqRemove = (id:number) =>
+export const reqRemove = (id: number) =>
   request.delete<any, any>(`/admin/acl/user/remove/${id}`)
 // 批量用户删除
-export const reqBatRemove = (idList:number[]) =>
-  request.delete('/admin/acl/user/batchRemove',{data:idList})
+export const reqBatRemove = (idList: number[]) =>
+  request.delete('/admin/acl/user/batchRemove', { data: idList })

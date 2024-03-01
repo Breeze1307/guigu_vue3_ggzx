@@ -28,7 +28,13 @@
   </el-card>
   <el-card style="margin-top: 10px">
     <el-button type="primary" @click="addUser">添加用户</el-button>
-    <el-button type="primary" @click="batRemove" :disabled="idList.length>0?false:true" >删除用户</el-button>
+    <el-button
+      type="primary"
+      @click="batRemove"
+      :disabled="idList.length > 0 ? false : true"
+    >
+      删除用户
+    </el-button>
     <el-table
       :data="userInfo"
       border
@@ -353,7 +359,7 @@ const remove = async (id: number, index: number) => {
     if (userInfo.value.length > 1) {
       userInfo.value.splice(index, 1)
     } else {
-      getUserList(pageNo.value-1)
+      getUserList(pageNo.value - 1)
     }
     ElMessage.success('删除成功')
   } else {
@@ -365,11 +371,11 @@ const handleSelectionChange = (val: UserInfo[]) => {
   idList.value = val.map((item) => item.id as number)
 }
 // 批量删除用户
-const batRemove =async () => {
-  let result: any =await reqBatRemove(idList.value)
+const batRemove = async () => {
+  let result: any = await reqBatRemove(idList.value)
   if (result.code == 200) {
     ElMessage.success('删除成功')
-    getUserList(userInfo.value.length > 1?pageNo.value:pageNo.value-1)
+    getUserList(userInfo.value.length > 1 ? pageNo.value : pageNo.value - 1)
   } else {
     ElMessage.error('删除失败')
   }

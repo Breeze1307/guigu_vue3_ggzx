@@ -170,14 +170,14 @@ import {
   reqAssignRole,
   reqBatRemove,
   reqRemove,
-} from '@/api/user'
+} from '@/api/acl/user'
 import type {
   UserInfoList,
   UserInfo,
   AllRoleInfo,
   RoleInfo,
   assignRoleData,
-} from '@/api/user/type'
+} from '@/api/acl/user/type'
 import { ElMessage } from 'element-plus'
 // 用户数据列表
 let userInfo = ref<any>([])
@@ -391,4 +391,4 @@ const batRemove = async () => {
     margin-bottom: none;
   }
 }
-</style>
+</style>@/api/acl/user@/api/acl/user/type

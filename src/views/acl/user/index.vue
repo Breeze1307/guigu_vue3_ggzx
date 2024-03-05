@@ -391,4 +391,5 @@ const batRemove = async () => {
     margin-bottom: none;
   }
 }
-</style>@/api/acl/user@/api/acl/user/type
+</style>
+@/api/acl/user@/api/acl/user/type

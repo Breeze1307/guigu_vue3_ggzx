@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 17:10:35
- * @LastEditTime: 2024-01-17 11:27:34
+ * @LastEditTime: 2024-03-06 20:52:41
  * @LastEditors: breeze1307
 -->
 #### **1.husky提交报错**
@@ -108,6 +108,30 @@ export default {
 
 思考：  
 vue3表格数据中本身没有的属性，通过row可以添加，并直接更新dom在模板上展示，而vue2能添加，但是不会更新dom，不知道是不是ts类型定义的原因  
-
-
-
+#### **8.element-plus问题记录**  
+(1) 要使表单验证生效/不出错  
+el-form要绑定数据，prop属性的值要与表单绑定数据里面的属性名称一致  
+![20240305170931](https://raw.githubusercontent.com/Breeze1307/img/main/20240305170931.png)
+#### **9.axios请求传参问题**  
+get(url,config)  
+get请求接收两个参数
+post(url,data,config)，data作为请求体  
+![20240306204732](https://raw.githubusercontent.com/Breeze1307/img/main/20240306204732.png)  
+当遇到这种表单数据的post请求时
+1.修改content-type
+2.像get一样使用拼接
+```ts
+//给相应的职位下发权限
+export const reqSetPermisstion = (roleId: number, permissionId: number[]) =>
+  request.post(
+    '/admin/acl/permission/doAssign/?' + `roleId=${roleId}&permissionId=${permissionId}`,
+  )
+```
+3.在将参数放在params里面，data要置为null  
+```ts
+// 权限分配请求
+export const reqSetPermission = (roleId: number, permissionId: number[]) =>
+  request.post<any, any>('/admin/acl/permission/doAssign', null, {
+    params: { roleId: roleId, permissionId: permissionId.join(',') },
+  })
+```

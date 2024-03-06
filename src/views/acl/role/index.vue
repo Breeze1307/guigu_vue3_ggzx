@@ -135,9 +135,14 @@ import {
   reqAddOrUpdateRole,
   reqRemove,
   reqPermissionInfo,
-  reqSetPermission
+  reqSetPermission,
 } from '@/api/acl/role'
-import type { roleInfo, roleAllInfo, permissionInfo,permissionData } from '@/api/acl/role/type'
+import type {
+  roleInfo,
+  roleAllInfo,
+  permissionInfo,
+  permissionData,
+} from '@/api/acl/role/type'
 import useLayoutStore from '@/store/modules/setting'
 import { ElMessage } from 'element-plus'
 let settingStore = useLayoutStore()
@@ -169,7 +174,7 @@ const defaultProps = {
 // 权限数据列表
 let permissionList = ref<permissionInfo[]>([])
 // 已分配的权限
-let selectArr=ref<number[]>([])
+let selectArr = ref<number[]>([])
 // 获取角色信息
 const getHasRole = async (page = 1) => {
   pageNo.value = page
@@ -219,7 +224,7 @@ const updateRole = (row: any) => {
 const submit = async () => {
   let result: any = await reqAddOrUpdateRole(roleParams)
   if (result.code == 200) {
-    getHasRole(roleParams.id?pageNo.value:1)
+    getHasRole(roleParams.id ? pageNo.value : 1)
     ElMessage.success(roleParams.id ? '修改成功' : '添加成功')
   } else {
     ElMessage.error(roleParams.id ? '修改失败' : '添加失败')
@@ -241,35 +246,35 @@ const remove = async (id: number, index: number) => {
   }
 }
 // 分配权限按钮
-const assignPermission = async (row:any) => {
-  Object.assign(roleParams,row)
+const assignPermission = async (row: any) => {
+  Object.assign(roleParams, row)
   let result: permissionData = await reqPermissionInfo(roleParams.id)
   if (result.code == 200) {
-    drawer.value=true
+    drawer.value = true
     permissionList.value = result.data
-    selectArr.value=filterSelectArr(permissionList.value,[])
+    selectArr.value = filterSelectArr(permissionList.value, [])
   }
 }
 // 取出select为true的数据
-const filterSelectArr = (allData:any,initArr:any) => {
-  allData.forEach((item:any) => {
+const filterSelectArr = (allData: any, initArr: any) => {
+  allData.forEach((item: any) => {
     if (item.select && item.level == 4) {
       initArr.push(item.id)
     } else if (item.children?.length > 0) {
-      filterSelectArr(item.children,initArr)
+      filterSelectArr(item.children, initArr)
     }
-  });
+  })
   return initArr
 }
 // 权限分配请求
-const confirmClick =async () => {
+const confirmClick = async () => {
   let roleId = roleParams.id
   let checkedArr = treeRef.value.getCheckedKeys()
   let checkedHalfArr = treeRef.value.getHalfCheckedKeys()
-  let permissionId=checkedArr.concat(checkedHalfArr)
+  let permissionId = checkedArr.concat(checkedHalfArr)
   let result: any = await reqSetPermission(roleId, permissionId)
   if (result.code == 200) {
-    drawer.value=false
+    drawer.value = false
     window.location.reload()
     ElMessage.success('权限分配成功')
   }

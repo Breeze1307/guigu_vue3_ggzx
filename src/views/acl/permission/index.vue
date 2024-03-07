@@ -28,7 +28,10 @@
         >
           编辑
         </el-button>
-        <el-popconfirm :title="`确定删除${row.name}吗？`" @confirm="removeMenu(row.id,$index)">
+        <el-popconfirm
+          :title="`确定删除${row.name}吗？`"
+          @confirm="removeMenu(row.id, $index)"
+        >
           <template #reference>
             <el-button
               type="primary"
@@ -78,7 +81,7 @@ let paramsMenu = reactive<MenuData>({
   pid: 0,
   name: '',
   code: '',
-  type:1,
+  type: 1,
   level: 0,
 })
 onMounted(() => {
@@ -97,7 +100,7 @@ const addOrUpdateMenu = (row: any) => {
     id: 0,
     pid: row.id,
     name: '',
-    type:row.level + 1 == 4?2:1,
+    type: row.level + 1 == 4 ? 2 : 1,
     code: '',
     level: row.level + 1,
   })
@@ -116,15 +119,15 @@ const save = async () => {
   }
 }
 // 更新菜单
-const updateMenu = (row:any) => {
+const updateMenu = (row: any) => {
   title.value = row.level == 3 ? '更新功能' : '更新菜单'
   addDialogVisible.value = true
   Object.assign(paramsMenu, row)
 }
 // 删除菜单
-const removeMenu = async (id:number,index:number) => {
+const removeMenu = async (id: number, index: number) => {
   let result: any = await reqRemoveMenu(id)
-  if (result.code == 200) { 
+  if (result.code == 200) {
     ElMessage.success('删除成功')
     addDialogVisible.value = false
     getMenuList()

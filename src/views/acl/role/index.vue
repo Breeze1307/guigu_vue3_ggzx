@@ -204,7 +204,7 @@ const reset = () => {
 // 添加职位
 const addPosts = () => {
   // 清除上一次数据
-  roleParams.id=0
+  roleParams.id = 0
   roleParams.roleName = ''
   // 清除上一次错误验证
   nextTick(() => {

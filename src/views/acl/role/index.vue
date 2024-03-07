@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: breeze1307
  * @Date: 2023-12-12 15:30:37
- * @LastEditTime: 2024-03-06 19:09:50
+ * @LastEditTime: 2024-03-07 10:43:15
  * @LastEditors: breeze1307
 -->
 
@@ -204,6 +204,7 @@ const reset = () => {
 // 添加职位
 const addPosts = () => {
   // 清除上一次数据
+  roleParams.id=0
   roleParams.roleName = ''
   // 清除上一次错误验证
   nextTick(() => {

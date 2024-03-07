@@ -2,7 +2,7 @@
  * @Description:
  * @Author: breeze1307
  * @Date: 2023-11-09 17:10:35
- * @LastEditTime: 2024-03-06 20:52:41
+ * @LastEditTime: 2024-03-06 21:07:27
  * @LastEditors: breeze1307
 -->
 #### **1.husky提交报错**
@@ -135,3 +135,5 @@ export const reqSetPermission = (roleId: number, permissionId: number[]) =>
     params: { roleId: roleId, permissionId: permissionId.join(',') },
   })
 ```
+#### **10.chrome开发者调试工具**  
+有时候你会发现chrome开发者调试工具，网络中没有显示post请求，可能是因为页面中写了刷新页面代码，此时，将调试工具里的“保留日志”勾选上即可  
